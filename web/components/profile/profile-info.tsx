@@ -98,7 +98,7 @@ export function ProfileInfo(props: {
           // refreshShips={refresh}
         />
       ) : (
-        <Col className="bg-canvas-0 w-full gap-4 rounded p-4">
+        <Col className="bg-canvas-50 w-full gap-4 rounded p-4">
           <div className="text-sm text-gray-500 dark:text-gray-400">
             <Content className="w-full line-clamp-6" content={profile.bio as JSONContent} />
           </div>
@@ -106,7 +106,7 @@ export function ProfileInfo(props: {
             <div className="bg-ink-200 dark:bg-ink-400 h-4 w-2/5" />
             <div className="bg-ink-200 dark:bg-ink-400 h-4 w-3/5" />
             <div className="bg-ink-200 dark:bg-ink-400 h-4 w-1/2" />
-            <div className="from-canvas-0 absolute bottom-0 h-12 w-full bg-gradient-to-t to-transparent" />
+            <div className="from-canvas-50 absolute bottom-0 h-12 w-full bg-gradient-to-t to-transparent" />
           </Col>
           <Row className="gap-2">
             <SignUpButton text={t('profile.info.signup_to_see', 'Sign up to see profile')} />

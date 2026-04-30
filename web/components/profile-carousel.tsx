@@ -38,7 +38,7 @@ export default function ProfileCarousel(props: {profile: Profile; refreshProfile
           </div>
         )}
         {photoNums > 0 && (
-          <Col className="bg-canvas-100 dark:bg-canvas-0 text-ink-500 relative h-[300px] w-[300px] flex-none items-center rounded text-6xl ">
+          <Col className="bg-canvas-100 dark:bg-canvas-50 text-ink-500 relative h-[300px] w-[300px] flex-none items-center rounded text-6xl ">
             <Col className=" m-auto items-center gap-1">
               <div className="select-none font-semibold">+{photoNums}</div>
               <SignUpButton

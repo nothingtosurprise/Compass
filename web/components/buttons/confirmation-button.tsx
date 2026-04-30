@@ -53,7 +53,7 @@ export function ConfirmationButton(props: {
   return (
     <>
       <Modal open={open} setOpen={updateOpen}>
-        <Col className="bg-canvas-0 gap-4 rounded-md px-8 py-6">
+        <Col className="bg-canvas-50 gap-4 rounded-md px-8 py-6">
           {children}
           <Row className="w-full justify-end gap-4">
             <Button

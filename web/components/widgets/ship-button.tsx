@@ -40,7 +40,7 @@ export const ShipButton = (props: {
         className={clsx(
           baseButtonClasses,
           'p-2 text-sm',
-          'text-ink-500 disabled:text-ink-500 bg-canvas-0 active:bg-canvas-100 disabled:bg-canvas-100 border-ink-100 dark:border-ink-300 !rounded-full border shadow disabled:cursor-not-allowed',
+          'text-ink-500 disabled:text-ink-500 bg-canvas-50 active:bg-canvas-100 disabled:bg-canvas-100 border-ink-100 dark:border-ink-300 !rounded-full border shadow disabled:cursor-not-allowed',
           className,
         )}
         onClick={like}

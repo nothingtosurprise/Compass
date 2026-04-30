@@ -10,7 +10,7 @@ export function GradientContainer(props: {children: React.ReactNode; className?:
         className,
       )}
     >
-      <div className="bg-canvas-0 w-full rounded p-3 ">{children}</div>
+      <div className="bg-canvas-50 w-full rounded p-3 ">{children}</div>
     </div>
   )
 }

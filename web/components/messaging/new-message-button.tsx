@@ -64,8 +64,8 @@ function MessageModal(props: {open: boolean; setOpen: (open: boolean) => void}) 
             .concat(buildArray(privateUser?.id))}
         />
       </Col>
-      {errorText && <p className={'bg-canvas-0 text-red-500 px-5'}>{errorText}</p>}
-      <Row className={'bg-canvas-0 justify-end rounded-b-md p-2'}>
+      {errorText && <p className={'bg-canvas-50 text-red-500 px-5'}>{errorText}</p>}
+      <Row className={'bg-canvas-50 justify-end rounded-b-md p-2'}>
         <Button disabled={users.length === 0} onClick={createChannel}>
           {t('messages.create', 'Create')}
         </Button>

@@ -25,7 +25,7 @@ export const QuestionsForm = (props: {questionType: QuestionType}) => {
   const router = useRouter()
   return (
     <Col className={'w-full items-center'}>
-      <Col className={' bg-canvas-0 w-full max-w-2xl justify-between px-6 py-4'}>
+      <Col className={' bg-canvas-50 w-full max-w-2xl justify-between px-6 py-4'}>
         <Title>Questions</Title>
         <Col className={'gap-2'}>
           {user &&

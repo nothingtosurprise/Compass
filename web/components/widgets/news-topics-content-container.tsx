@@ -14,7 +14,7 @@ export const NewsTopicsContentContainer = (props: {
   return (
     <Col
       className={clsx(
-        'border-ink-300 bg-canvas-0 m-0 mb-4 rounded-lg border object-contain px-3 py-1',
+        'border-ink-300 bg-canvas-50 m-0 mb-4 rounded-lg border object-contain px-3 py-1',
         className,
       )}
     >

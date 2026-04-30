@@ -300,7 +300,7 @@ export const SelectAnswer = (props: {
     <RadioGroup
       data-testid="compatibility-question-your-answer"
       className={
-        'border-ink-300 text-ink-400 bg-canvas-0 inline-flex flex-col gap-2 rounded-md border p-1 text-sm shadow-sm'
+        'border-ink-300 text-ink-400 bg-canvas-50 inline-flex flex-col gap-2 rounded-md border p-1 text-sm shadow-sm'
       }
       value={value}
       onChange={setValue}
@@ -338,7 +338,7 @@ export const MultiSelectAnswers = (props: {
     <Col
       data-testid="compatibility-answers-you-accept"
       className={
-        'border-ink-300 text-ink-400 bg-canvas-0 inline-flex flex-col gap-2 rounded-md border p-1 text-sm shadow-sm main-font'
+        'border-ink-300 text-ink-400 bg-canvas-50 inline-flex flex-col gap-2 rounded-md border p-1 text-sm shadow-sm main-font'
       }
     >
       {options.map((label, i) => (

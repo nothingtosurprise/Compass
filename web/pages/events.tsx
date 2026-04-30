@@ -124,28 +124,28 @@ export default function EventsPage() {
               )}
             </p>
             <div className="flex flex-wrap gap-2">
-              <span className="bg-canvas-0 text-ink-700 px-3 py-1 rounded-full text-xs">
+              <span className="bg-canvas-50 text-ink-700 px-3 py-1 rounded-full text-xs">
                 📚 {t('events.book_clubs', 'Book clubs')}
               </span>
-              <span className="bg-canvas-0 text-ink-700 px-3 py-1 rounded-full text-xs">
+              <span className="bg-canvas-50 text-ink-700 px-3 py-1 rounded-full text-xs">
                 🎮 {t('events.game_nights', 'Game nights')}
               </span>
-              <span className="bg-canvas-0 text-ink-700 px-3 py-1 rounded-full text-xs">
+              <span className="bg-canvas-50 text-ink-700 px-3 py-1 rounded-full text-xs">
                 🚶 {t('events.walking_groups', 'Walking groups')}
               </span>
-              <span className="bg-canvas-0 text-ink-700 px-3 py-1 rounded-full text-xs">
+              <span className="bg-canvas-50 text-ink-700 px-3 py-1 rounded-full text-xs">
                 ☕ {t('events.coffee_chats', 'Coffee chats')}
               </span>
-              <span className="bg-canvas-0 text-ink-700 px-3 py-1 rounded-full text-xs">
+              <span className="bg-canvas-50 text-ink-700 px-3 py-1 rounded-full text-xs">
                 🎨 {t('events.creative_workshops', 'Creative workshops')}
               </span>
-              <span className="bg-canvas-0 text-ink-700 px-3 py-1 rounded-full text-xs">
+              <span className="bg-canvas-50 text-ink-700 px-3 py-1 rounded-full text-xs">
                 🤔 {t('events.philosophy_discussions', 'Philosophy discussions')}
               </span>
-              <span className="bg-canvas-0 text-ink-700 px-3 py-1 rounded-full text-xs">
+              <span className="bg-canvas-50 text-ink-700 px-3 py-1 rounded-full text-xs">
                 🌱 {t('events.sustainability_meetups', 'Sustainability meetups')}
               </span>
-              <span className="bg-canvas-0 text-ink-700 px-3 py-1 rounded-full text-xs">
+              <span className="bg-canvas-50 text-ink-700 px-3 py-1 rounded-full text-xs">
                 🎯 {t('events.hobby_exchanges', 'Hobby exchanges')}
               </span>
             </div>

@@ -26,7 +26,7 @@ export function BioBlock(props: {
   return (
     <Col
       className={clsx(
-        'bg-canvas-0 flex-grow whitespace-pre-line rounded-md leading-relaxed',
+        'flex-grow whitespace-pre-line rounded-md leading-relaxed',
         !edit && 'px-3 py-2',
       )}
     >

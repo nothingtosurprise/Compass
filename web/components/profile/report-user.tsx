@@ -91,7 +91,7 @@ export const ReportUser = (props: {user: User; closeModal: () => void}) => {
                 'Add more context and/or provide a link to the content',
               )}
               rows={2}
-              className={'border-ink-300 bg-canvas-0 -ml-2 rounded-md border p-2'}
+              className={'border-ink-300 bg-canvas-50 -ml-2 rounded-md border p-2'}
               value={otherReportType}
               onChange={(e: React.ChangeEvent<HTMLTextAreaElement>) =>
                 setOtherReportType(e.target.value)

@@ -102,7 +102,7 @@ export const AddPhotosWidget = (props: {
             >
               {isPinned && (
                 <div className={clsx(' absolute left-0 top-0 rounded-full')}>
-                  <CheckCircleIcon className={' bg-canvas-0 h-6 w-6 rounded-full text-teal-500'} />
+                  <CheckCircleIcon className={' bg-canvas-50 h-6 w-6 rounded-full text-teal-500'} />
                 </div>
               )}
               <Button
@@ -114,7 +114,7 @@ export const AddPhotosWidget = (props: {
                 }}
                 color={'gray-outline'}
                 size={'2xs'}
-                className={clsx('bg-canvas-0 absolute right-0 top-0 !rounded-full !px-1 py-1')}
+                className={clsx('bg-canvas-50 absolute right-0 top-0 !rounded-full !px-1 py-1')}
               >
                 <XMarkIcon className={'h-4 w-4'} />
               </Button>

@@ -67,7 +67,7 @@ export default function DropdownMenu(props: {
               ref={refs.setFloating}
               style={floatingStyles}
               className={clsx(
-                'bg-canvas-0 ring-ink-1000 z-30 mt-2 rounded-md shadow-lg ring-1 ring-opacity-5 focus:outline-none',
+                'bg-canvas-50 ring-ink-1000 z-30 mt-2 rounded-md shadow-lg ring-1 ring-opacity-5 focus:outline-none',
                 menuWidth ?? 'w-34',
                 menuItemsClass,
                 'py-1',

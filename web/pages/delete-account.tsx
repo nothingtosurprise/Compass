@@ -15,7 +15,7 @@ export default function DeleteAccountPage() {
   return (
     <PageBase
       trackPageView={'delete-account'}
-      className="max-w-4xl mx-auto p-8 text-gray-800 dark:text-white col-span-8 bg-canvas-0"
+      className="max-w-4xl mx-auto p-8 text-gray-800 dark:text-white col-span-8 bg-canvas-50"
     >
       <SEO
         title={t('delete.seo.title', 'Delete Your Account')}

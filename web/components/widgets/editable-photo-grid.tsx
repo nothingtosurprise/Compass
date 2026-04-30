@@ -169,7 +169,7 @@ const PhotoItem = ({
           e.stopPropagation()
           onDelete(url)
         }}
-        className="bg-canvas-0 hover:bg-ink-100 absolute right-2 top-2 rounded-full p-1"
+        className="bg-canvas-50 hover:bg-ink-100 absolute right-2 top-2 rounded-full p-1"
       >
         <XMarkIcon className="h-5 w-5" />
       </button>

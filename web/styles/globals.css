@@ -86,8 +86,31 @@
     -webkit-tap-highlight-color: transparent;
   }
 
+  /*Background:    #EDE8E0  (current - warm beige)*/
+  /*Sidebar:       #2C2416  (dark espresso brown)*/
+  /*Cards:         #F7F4EF  (cream white)*/
+  /*Primary:       #C17F3E  (warm amber/gold)*/
+  /*Secondary:     #8B5E3C  (terracotta brown)*/
+  /*Accent:        #6B8F71  (sage green)*/
+  /*Text:          #1E1A14  (deep warm black)*/
+  /*Muted text:    #8C8070  (warm gray)*/
+  /*Tags:          #E8D5BC  (light tan)*/
   :root {
     touch-action: pan-y;
+
+    /* Ink - Text Colors */
+    --color-ink-900: 30 26 20; /* Deep Warm Black (#1E1A14) */
+    --color-ink-500: 140 128 112; /* Muted Warm Gray (#8C8070) */
+
+    /* Canvas - Backgrounds & Surfaces */
+    --color-canvas-50: 247 244 239; /* Cards - Cream White (#F7F4EF) */
+    --color-canvas-100: 237 232 224; /* Background - Warm Beige (#EDE8E0) */
+    --color-canvas-200: 232 213 188; /* Tags - Light Tan (#E8D5BC) */
+    --color-canvas-950: 44 36 22; /* Sidebar - Dark Espresso (#2C2416) */
+
+    /* Green - Accents */
+    --color-green-500: 107 143 113; /* Accent - Sage Green (#6B8F71) */
+
     /* Text / Ink Grey Scale */
     /* High Contrast */
     --color-ink-0: 255 255 255; /* white */
@@ -96,11 +119,11 @@
     --color-ink-200: 255 255 255;
     --color-ink-300: 160 160 160;
     --color-ink-400: 160 160 160;
-    --color-ink-500: 80 80 80;
+    /*--color-ink-500: 80 80 80;*/
     --color-ink-600: 0 0 0;
     --color-ink-700: 0 0 0;
     --color-ink-800: 0 0 0;
-    --color-ink-900: 0 0 0;
+    /*--color-ink-900: 0 0 0;*/
     --color-ink-950: 0 0 0;
     --color-ink-1000: 0 0 0; /* black */
 
@@ -121,10 +144,10 @@
 
     /* Background / Canvas Grey Scale */
     --color-canvas-0: 255 255 255; /* white */
-    --color-canvas-25: 245 245 245;
-    --color-canvas-50: 240 240 240;
-    --color-canvas-100: 220 220 220;
-    --color-canvas-200: 210 210 210;
+    --color-canvas-25: 242 240 232;
+    /*--color-canvas-50: 248 247 255;*/
+    /*--color-canvas-100: 220 220 220;*/
+    /*--color-canvas-200: 210 210 210;*/
     --color-canvas-300: 190 190 190;
     --color-canvas-400: 160 160 160;
     --color-canvas-500: 130 130 130;
@@ -132,20 +155,21 @@
     --color-canvas-700: 75 75 75;
     --color-canvas-800: 50 50 50;
     --color-canvas-900: 30 30 30;
-    --color-canvas-950: 15 15 15;
+    /*--color-canvas-950: 15 15 15;*/
     --color-canvas-1000: 0 0 0; /* black */
 
-    --color-primary-950: 23 37 84; /* very dark navy */
-    --color-primary-900: 30 58 138;
-    --color-primary-800: 30 64 175;
-    --color-primary-700: 29 78 216;
-    --color-primary-600: 29 78 216;
-    --color-primary-500: 59 130 246; /* standard blue */
-    --color-primary-400: 96 165 250;
-    --color-primary-300: 147 197 253;
-    --color-primary-200: 191 219 254;
-    --color-primary-100: 219 234 254;
-    --color-primary-50: 239 246 255; /* very light blue */
+    /* Primary - Warm Amber */
+    --color-primary-950: 250 243 233; /* #FAF3E9 */
+    --color-primary-900: 243 228 206; /* #F3E4CE */
+    --color-primary-800: 232 201 157; /* #E8C99D */
+    --color-primary-700: 220 171 113; /* #DCAB71 */
+    --color-primary-600: 208 147 82; /* #D09352 */
+    --color-primary-500: 193 127 62; /* #C17F3E - Base */
+    --color-primary-400: 166 104 46; /* #A6682E */
+    --color-primary-300: 133 80 34; /* #855022 */
+    --color-primary-200: 101 58 24; /* #653A18 */
+    --color-primary-100: 71 39 16; /* #472710 */
+    --color-primary-50: 43 21 8; /* #2B1508 */
 
     --color-yes-0: 255 255 255;
     --color-yes-50: 249 249 249;
@@ -180,7 +204,7 @@
     --color-green-800: 22 101 52;
     --color-green-700: 21 128 61;
     --color-green-600: 22 163 74;
-    --color-green-500: 34 197 94; /* standard green */
+    /*--color-green-500: 34 197 94; !* standard green *!*/
     --color-green-400: 74 222 128;
     --color-green-300: 110 231 183; /* vibrant but not neon */
     --color-green-200: 167 243 208; /* gentle mid-light tone */
@@ -454,14 +478,14 @@ ul {
 
 .custom-link a,
 .custom-link button {
-  color: #0969da;
+  color: #c17f3e;
   text-decoration: none;
   font-family: var(--font-main), serif;
 }
 
 .dark .custom-link a,
 .dark .custom-link button {
-  color: #4493f8;
+  color: #c17f3e;
   text-decoration: none;
   font-family: var(--font-main), serif;
 }
@@ -481,7 +505,7 @@ ul {
 }
 
 .body-bg {
-  background-color: rgb(var(--color-canvas-0));
+  background-color: rgb(var(--color-canvas-100));
 }
 
 /* Restore normal ol numbers and ensure they are visible */

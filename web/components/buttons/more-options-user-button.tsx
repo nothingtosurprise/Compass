@@ -52,7 +52,7 @@ export function MoreOptionsUserButton(props: {user: User}) {
       </Tooltip>
 
       <Modal open={isModalOpen} setOpen={setIsModalOpen}>
-        <Col className={'bg-canvas-0 text-ink-1000 rounded-md p-4 '}>
+        <Col className={'bg-canvas-50 text-ink-1000 rounded-md p-4 '}>
           <div className="mb-2 flex flex-wrap justify-between">
             <Title className={'!mb-0'}>{name}</Title>
             {(isAdmin || isTrusted) && (

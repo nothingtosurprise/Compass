@@ -8,7 +8,7 @@ export function ToastClipboard(props: {className?: string}) {
     <Row
       className={clsx(
         'border-ink-400 absolute items-center' +
-          'divide-ink-200 bg-canvas-0 gap-2 divide-x rounded-md border-2 ' +
+          'divide-ink-200 bg-canvas-50 gap-2 divide-x rounded-md border-2 ' +
           'h-15 text-ink-500 z-10 w-[15rem] p-2 pr-3',
         className,
       )}

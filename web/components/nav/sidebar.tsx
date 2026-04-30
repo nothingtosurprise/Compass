@@ -21,9 +21,10 @@ import {Item, SidebarItem} from './sidebar-item'
 export default function Sidebar(props: {
   className?: string
   isMobile?: boolean
+  style?: React.CSSProperties
   navigationOptions: Item[]
 }) {
-  const {className, isMobile} = props
+  const {className, isMobile, style} = props
   const router = useRouter()
   const currentPage = router.pathname
 
@@ -46,12 +47,13 @@ export default function Sidebar(props: {
         'flex flex-col h-[calc(100dvh-var(--hloss))] mb-[calc(var(--bnh))] mt-[calc(var(--tnh))]',
         className,
       )}
+      style={style}
     >
-      <SiteLogo className={''} />
+      <SiteLogo className={'invert'} />
 
       {user === undefined && <div className="h-[24px]" />}
 
-      {user && !isMobile && <ProfileSummary user={user} className="mb-3" />}
+      {user && !isMobile && <ProfileSummary user={user} className="mb-3 text-white" />}
 
       <div className="mb-4 flex flex-col gap-1 !overflow-y-auto">
         {navOptions.map((item) => (
@@ -63,7 +65,7 @@ export default function Sidebar(props: {
             alt="divider"
             width={160}
             height={80}
-            className="mx-auto pt-4 hover:opacity-70 cursor-pointer invert dark:invert-0"
+            className="mx-auto pt-4 hover:opacity-70 cursor-pointer"
             onClick={() => router.push(ANDROID_APP_URL)}
           />
         )}

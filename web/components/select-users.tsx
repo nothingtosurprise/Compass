@@ -107,7 +107,7 @@ export function SelectUsers(props: {
                 >
                   <Menu.Items
                     static={true}
-                    className="divide-ink-100 bg-canvas-0 ring-ink-1000 absolute right-0 mt-2 w-full origin-top-right cursor-pointer divide-y rounded-md shadow-lg ring-1 ring-opacity-5 focus:outline-none"
+                    className="divide-ink-100 bg-canvas-50 ring-ink-1000 absolute right-0 mt-2 w-full origin-top-right cursor-pointer divide-y rounded-md shadow-lg ring-1 ring-opacity-5 focus:outline-none"
                   >
                     <div className="py-1">
                       {filteredUsers.map((user) => (

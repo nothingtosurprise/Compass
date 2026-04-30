@@ -55,7 +55,7 @@ export function CustomizeableDropdown(props: {
               ref={refs.setFloating}
               style={floatingStyles}
               className={clsx(
-                'bg-canvas-0 ring-ink-1000 z-30 rounded-md px-2 py-2 shadow-lg ring-1 ring-opacity-5 focus:outline-none',
+                'bg-canvas-50 ring-ink-1000 z-30 rounded-md px-2 py-2 shadow-lg ring-1 ring-opacity-5 focus:outline-none',
                 menuWidth ?? 'w-36',
                 popoverClassName,
               )}

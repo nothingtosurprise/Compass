@@ -105,7 +105,7 @@ function AnswerBlock(props: {
   return (
     <Col
       key={question.id}
-      className={'bg-canvas-0 flex-grow whitespace-pre-line rounded-md px-3 py-2 leading-relaxed'}
+      className={'bg-canvas-50 flex-grow whitespace-pre-line rounded-md px-3 py-2 leading-relaxed'}
     >
       <Row className="text-ink-600 justify-between text-sm">
         {question.question}

@@ -42,7 +42,7 @@ export function SearchableSelect(props: {
           <PopoverButton
             ref={refs.setReference}
             className={clsx(
-              'bg-canvas-0 border-ink-300 flex w-32 items-center justify-between rounded-md border px-3 py-2 text-left text-sm shadow-sm focus:outline-none',
+              'bg-canvas-50 border-ink-300 flex w-32 items-center justify-between rounded-md border px-3 py-2 text-left text-sm shadow-sm focus:outline-none',
               className,
             )}
           >
@@ -55,7 +55,7 @@ export function SearchableSelect(props: {
           <PopoverPanel
             ref={refs.setFloating}
             style={floatingStyles}
-            className="bg-canvas-0 ring-ink-1000 z-30 mt-1 w-48 rounded-md shadow-lg ring-1 ring-opacity-5 focus:outline-none"
+            className="bg-canvas-50 ring-ink-1000 z-30 mt-1 w-48 rounded-md shadow-lg ring-1 ring-opacity-5 focus:outline-none"
           >
             <div className="p-2">
               <Input

@@ -26,7 +26,7 @@ export default function ShortToggle(props: {
     : 'cursor-not-allowed opacity-30'
 
   const knobBaseClasses =
-    'bg-canvas-0 pointer-events-none inline-block rounded-full ring-0 transition duration-200 ease-in-out'
+    'bg-canvas-50 pointer-events-none inline-block rounded-full ring-0 transition duration-200 ease-in-out'
   const knobColorClasses = clsx({
     'dark:bg-primary-50': on && colorMode === 'primary',
     'dark:bg-amber-50': on && colorMode === 'warning',

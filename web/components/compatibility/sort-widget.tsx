@@ -69,7 +69,7 @@ export function CompatibilitySortWidget(props: {
       buttonContent={(open: boolean) => (
         <DropdownButton content={sortToDisplay[sort]} open={open} />
       )}
-      menuItemsClass={'bg-canvas-0'}
+      menuItemsClass={'bg-canvas-50'}
       menuWidth="w-56"
     />
   )

@@ -41,7 +41,7 @@ export const EmojiList = forwardRef((props: SuggestionProps<EmojiData>, ref) => 
   }))
 
   return (
-    <div className="w-42 bg-canvas-0 ring-ink-1000 absolute z-10 overflow-x-hidden rounded-md py-1 shadow-lg ring-1 ring-opacity-5 focus:outline-none">
+    <div className="w-42 bg-canvas-50 ring-ink-1000 absolute z-10 overflow-x-hidden rounded-md py-1 shadow-lg ring-1 ring-opacity-5 focus:outline-none">
       {!items.length ? (
         <span className="text-ink-900 m-1 whitespace-nowrap">No results</span>
       ) : (

@@ -61,7 +61,7 @@ export const ReportModal = (props: {
 
   return (
     <Modal open={isModalOpen} setOpen={setIsModalOpen}>
-      <Col className={'bg-canvas-0 rounded-md p-4'}>
+      <Col className={'bg-canvas-50 rounded-md p-4'}>
         <Title>Report {label}</Title>
         <span className={'mb-4 text-sm'}>
           {isReported

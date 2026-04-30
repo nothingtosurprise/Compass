@@ -49,7 +49,7 @@ export const LikeButton = (props: {
         disabled={isLoading}
         className={clsx(
           buttonClass('md', 'none'),
-          'text-ink-500 disabled:text-ink-500 bg-canvas-0 active:bg-canvas-100 disabled:bg-canvas-100 border-ink-100 dark:border-ink-300 !rounded-full border shadow',
+          'text-ink-500 disabled:text-ink-500 bg-canvas-50 active:bg-canvas-100 disabled:bg-canvas-100 border-ink-100 dark:border-ink-300 !rounded-full border shadow',
           isLoading && 'animate-pulse',
           className,
         )}

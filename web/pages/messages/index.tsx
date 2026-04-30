@@ -168,7 +168,7 @@ export const MessageChannelRow = (props: {
             {unseen && (
               <div
                 className={clsx(
-                  'text-canvas-0 bg-primary-500 h-4 min-w-[15px] rounded-full p-[2px] text-center text-[10px] ',
+                  'text-canvas-50 bg-primary-500 h-4 min-w-[15px] rounded-full p-[2px] text-center text-[10px] ',
                 )}
               />
             )}

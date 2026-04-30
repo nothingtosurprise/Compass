@@ -130,7 +130,7 @@
 //
 //   return (
 //     <Col className="mb-2 w-[200px] shrink-0 overflow-hidden rounded">
-//       <Col className="bg-canvas-0 w-full px-4 py-2">
+//       <Col className="bg-canvas-50 w-full px-4 py-2">
 //         <UserLink
 //           className={
 //             'hover:text-primary-500 text-ink-1000 truncate font-semibold transition-colors'

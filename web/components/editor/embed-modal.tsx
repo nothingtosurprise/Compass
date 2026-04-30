@@ -72,7 +72,7 @@ export function EmbedModal(props: {
 
   return (
     <Modal open={open} setOpen={setOpen}>
-      <Col className="bg-canvas-0 gap-2 rounded p-6">
+      <Col className="bg-canvas-50 gap-2 rounded p-6">
         <label htmlFor="embed" className="text-ink-700 block text-sm font-medium">
           Embed a Youtube video
         </label>

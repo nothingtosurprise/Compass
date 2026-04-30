@@ -283,7 +283,7 @@ function QuestionList({
         <div
           key={q.id}
           className={clsx(
-            'bg-canvas-0 border-canvas-100 rounded-lg border px-2 pt-2 shadow-sm transition-colors',
+            'bg-canvas-50 border-canvas-100 rounded-lg border px-2 pt-2 shadow-sm transition-colors',
             isLoading && 'animate-pulse opacity-80',
           )}
         >

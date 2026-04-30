@@ -22,7 +22,7 @@ export default function ReferralsPage() {
     <PageBase trackPageView={'referrals'} className="items-center">
       <SEO title="Compass" description={title} />
 
-      <Col className="bg-canvas-0 rounded-lg p-4 sm:p-8">
+      <Col className="bg-canvas-50 rounded-lg p-4 sm:p-8">
         <Title>{title}</Title>
 
         <CopyLinkRow url={url} eventTrackingName="copyreferral" />

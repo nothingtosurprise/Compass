@@ -167,7 +167,7 @@ export const Search = forwardRef<
           ref={ref}
           value={keywordInput}
           placeholder={placeholder}
-          className={'w-full max-w-xs'}
+          className={'w-full'}
           onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
             setKeywordInput(e.target.value)
           }}
@@ -203,7 +203,7 @@ export const Search = forwardRef<
         </Row>
       </Row>
       <RightModal
-        className="bg-canvas-0 w-2/3 text-sm lg:hidden h-full max-h-screen overflow-y-auto"
+        className="bg-canvas-50 w-2/3 text-sm lg:hidden h-full max-h-screen overflow-y-auto"
         open={openFiltersModal}
         setOpen={setOpenFiltersModal}
       >
@@ -232,8 +232,9 @@ export const Search = forwardRef<
             }}
             size={'xs'}
             color={'none'}
-            className={'bg-canvas-100 hover:bg-canvas-200'}
+            className={'text-ink-100 bg-primary-500 hover:bg-primary-400 rounded-xl'}
           >
+            🔔
             {bookmarked
               ? t('common.saved', 'Saved!')
               : loadingBookmark

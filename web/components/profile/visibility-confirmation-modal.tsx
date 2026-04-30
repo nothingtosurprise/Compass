@@ -17,7 +17,7 @@ export function VisibilityConfirmationModal(props: {
 
   return (
     <Modal open={open} setOpen={setOpen}>
-      <Col className="bg-canvas-0 gap-4 rounded-md px-8 py-6">
+      <Col className="bg-canvas-50 gap-4 rounded-md px-8 py-6">
         <Row className="items-center gap-2 text-lg">
           {isMakingPublic ? (
             <EyeIcon className="h-5 w-5" />

@@ -57,7 +57,7 @@ export function EventCard(props: {
 
   return (
     <div
-      className={clsx('bg-canvas-0 border-canvas-200 rounded-lg border p-4 shadow-sm', className)}
+      className={clsx('bg-canvas-50 border-canvas-200 rounded-lg border p-4 shadow-sm', className)}
     >
       {/* Header */}
       <div className="mb-3">

@@ -316,7 +316,7 @@ function ProfilePreview(props: {
   return (
     <div
       className={clsx(
-        'relative overflow-hidden rounded-lg',
+        'relative overflow-hidden rounded-lg bg-canvas-50',
         isLoading && 'scale-[0.94] transition-transform duration-[80ms] ease-out',
         !isLoading && 'transition-transform duration-[120ms] ease-in',
       )}
@@ -333,7 +333,7 @@ function ProfilePreview(props: {
       >
         {/* Phase 1: Dim overlay */}
         {isLoading && (
-          <div className="absolute inset-0 bg-canvas-0/[0.32] rounded-lg z-20 pointer-events-none" />
+          <div className="absolute inset-0 bg-canvas-50/[0.32] rounded-lg z-20 pointer-events-none" />
         )}
         <Col className={clsx('relative w-full rounded transition-all')}>
           <Row className={clsx('absolute top-2 right-2 items-start justify-end px-2 pb-3 z-10')}>
@@ -399,7 +399,7 @@ function ProfilePreview(props: {
                     ?.slice(0, 10)
                     ?.map(capitalize)
                     ?.map((tag, i) => (
-                      <span key={i} className={'bg-primary-200 text-sm px-3 py-2 rounded-full'}>
+                      <span key={i} className={'bg-canvas-200 text-sm px-3 py-2 rounded-full'}>
                         {tag.trim()}
                       </span>
                     ))}
@@ -481,8 +481,8 @@ function ProfilePreview(props: {
               {isOverflowing && (
                 <div
                   className={clsx(
-                    'absolute bottom-0 inset-x-0 h-16 bg-gradient-to-t from-canvas-0 to-transparent pointer-events-none',
-                    'group-hover:from-gray-50 dark:group-hover:from-canvas-100',
+                    'absolute bottom-0 inset-x-0 h-16 bg-gradient-to-t from-canvas-50 to-transparent pointer-events-none',
+                    'group-hover:from-canvas-100 dark:group-hover:from-canvas-100',
                   )}
                 />
               )}

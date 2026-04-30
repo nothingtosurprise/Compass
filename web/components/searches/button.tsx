@@ -33,8 +33,13 @@ export function BookmarkSearchButton(props: {
   if (!user) return null
   return (
     <>
-      <Button onClick={() => setOpen(true)} color="gray-outline" size={'xs'}>
-        {t('saved_searches.button', 'Saved Searches')}
+      <Button
+        onClick={() => setOpen(true)}
+        color="gray-outline"
+        size={'xs'}
+        className={'rounded-xl'}
+      >
+        ⭐ {t('saved_searches.button', 'Saved Searches')}
       </Button>
       <ButtonModal
         open={open}
@@ -156,8 +161,13 @@ export function BookmarkStarButton(props: {
   if (!user) return null
   return (
     <>
-      <Button onClick={() => setOpen(true)} color="gray-outline" size={'xs'}>
-        {t('saved_people.button', 'Saved People')}
+      <Button
+        onClick={() => setOpen(true)}
+        color="gray-outline"
+        size={'xs'}
+        className={'rounded-xl'}
+      >
+        👥 {t('saved_people.button', 'Saved People')}
       </Button>
       <StarModal
         open={open}

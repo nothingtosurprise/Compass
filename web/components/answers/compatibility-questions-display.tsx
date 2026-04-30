@@ -263,7 +263,7 @@ export function CompatibilityQuestionsDisplay(props: {
             {/*    setSearchTerm(e.target.value)*/}
             {/*    setPage(0)*/}
             {/*  }}*/}
-            {/*  className="h-8 pl-7 pr-2 text-sm border border-ink-300 rounded-xl bg-canvas-0 focus:outline-none focus:ring-1 focus:ring-primary-500 w-48 transition-all"*/}
+            {/*  className="h-8 pl-7 pr-2 text-sm border border-ink-300 rounded-xl bg-canvas-50 focus:outline-none focus:ring-1 focus:ring-primary-500 w-48 transition-all"*/}
             {/*/>*/}
             <Input
               value={searchTerm}
@@ -452,7 +452,7 @@ export function CompatibilityAnswerBlock(props: {
     <Col
       data-testid="profile-compatibility-section"
       className={
-        'bg-canvas-0 flex-grow gap-4 whitespace-pre-line rounded-xl px-3 py-2 leading-relaxed'
+        'bg-canvas-50 flex-grow gap-4 whitespace-pre-line rounded-xl px-3 py-2 leading-relaxed'
       }
     >
       <Row

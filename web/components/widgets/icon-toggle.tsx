@@ -24,7 +24,7 @@ export default function IconToggle(props: {
       <span
         className={clsx(
           on ? 'translate-x-4' : 'translate-x-0',
-          'bg-canvas-0 pointer-events-none relative inline-block h-[1.2rem] w-5 transform rounded-full shadow ring-0 transition duration-200 ease-in-out',
+          'bg-canvas-50 pointer-events-none relative inline-block h-[1.2rem] w-5 transform rounded-full shadow ring-0 transition duration-200 ease-in-out',
         )}
       >
         <span

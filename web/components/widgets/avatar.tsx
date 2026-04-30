@@ -60,7 +60,7 @@ export const Avatar = memo(
           width={sizeInPx}
           height={sizeInPx}
           className={clsx(
-            'bg-canvas-0 my-0 flex-shrink-0 rounded-full object-cover',
+            'bg-canvas-50 my-0 flex-shrink-0 rounded-full object-cover',
             `w-${s} h-${s}`,
             !noLink && 'cursor-pointer',
             className,
@@ -84,7 +84,7 @@ export const Avatar = memo(
     // ) : (
     //   <UserCircleIcon
     //     className={clsx(
-    //       `bg-canvas-0 flex-shrink-0 rounded-full w-${s} h-${s} text-ink-500`,
+    //       `bg-canvas-50 flex-shrink-0 rounded-full w-${s} h-${s} text-ink-500`,
     //       className
     //     )}
     //     aria-hidden="true"

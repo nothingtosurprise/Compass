@@ -132,7 +132,7 @@
 //       open
 //       setOpen={setOpen}
 //     >
-//       <Col className="bg-canvas-0 min-h-full gap-2 rounded p-4 pb-8">
+//       <Col className="bg-canvas-50 min-h-full gap-2 rounded p-4 pb-8">
 //         <Row className="justify-between">
 //           <Title className="!mb-0">
 //             Browse {!isCurrentUser && `for ${profile.user.name}`}
