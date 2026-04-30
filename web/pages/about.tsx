@@ -9,7 +9,7 @@ import {useT} from 'web/lib/locale'
 export const AboutBlock = (props: {text: ReactNode; title: string}) => {
   const {text, title} = props
   return (
-    <section className="mb-12">
+    <section className="mb-12 px-4 pb-4 bg-canvas-50 border border-canvas-200 rounded-xl shadow-xl">
       <h2 className="text-3xl font-bold mb-4">{title}</h2>
       <p className="text-lg">{text}</p>
     </section>
@@ -131,7 +131,7 @@ export default function About() {
                 {t('about.help.title', 'Help Compass')}
               </h3>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-8">
-                <div className="rounded-xl shadow p-6 flex flex-col items-center">
+                <div className="rounded-xl shadow p-6 flex flex-col items-center bg-canvas-50">
                   <h5
                     id="give-suggestions-or-contribute"
                     className="font-bold mb-4 text-xl text-center"
@@ -149,7 +149,7 @@ export default function About() {
                     content={t('about.suggestions.button', 'Suggest Here')}
                   />
                 </div>
-                <div className="rounded-xl shadow p-6 flex flex-col items-center">
+                <div className="rounded-xl shadow p-6 flex flex-col items-center bg-canvas-50">
                   <h5 id="share" className="font-bold mb-4 text-xl text-center">
                     {t('about.dev.title', 'Develop the App')}
                   </h5>
@@ -161,7 +161,7 @@ export default function About() {
                   </p>
                   <GeneralButton url={githubRepo} content={t('about.dev.button', 'View Code')} />
                 </div>
-                <div className="rounded-xl shadow p-6 flex flex-col items-center">
+                <div className="rounded-xl shadow p-6 flex flex-col items-center bg-canvas-50">
                   <h5 id="join-chats" className="font-bold mb-4 text-xl text-center">
                     {t('about.join.title', 'Join the Community')}
                   </h5>
@@ -182,7 +182,7 @@ export default function About() {
                     {/*</a>*/}
                   </div>
                 </div>
-                <div className="rounded-xl shadow p-6 flex flex-col items-center">
+                <div className="rounded-xl shadow p-6 flex flex-col items-center bg-canvas-50">
                   <h5 id="donate" className="font-bold mb-4 text-xl text-center">
                     {t('about.donate.title', 'Donate')}
                   </h5>
@@ -227,7 +227,7 @@ export default function About() {
                     {/*</span>*/}
                   </div>
                 </div>
-                <div className="rounded-xl shadow p-6 flex flex-col items-center md:col-span-2">
+                <div className="rounded-xl shadow p-6 flex flex-col items-center md:col-span-2 bg-canvas-200">
                   <h5 id="github-repo" className="font-bold mb-4 text-xl text-center">
                     {t('about.final.title', 'Tell Your Friends and Family')}
                   </h5>

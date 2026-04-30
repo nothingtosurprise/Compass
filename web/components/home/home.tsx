@@ -1,53 +1,237 @@
-import {useEffect} from 'react'
+import {discordLink, githubRepo} from 'common/constants'
+import Link from 'next/link'
+import {useEffect, useRef} from 'react'
 import {Col} from 'web/components/layout/col'
 import {SignUpButton} from 'web/components/nav/sidebar'
 import {useUser} from 'web/hooks/use-user'
 import {useT} from 'web/lib/locale'
 
-export function AboutBox(props: {title: string; text: string}) {
-  const {title, text} = props
+// ─── Types ────────────────────────────────────────────────────────────────────
+
+interface FeatureCardProps {
+  icon: string
+  title: string
+  text: string
+}
+
+interface SocialAvatarProps {
+  letter: string
+  gradient: string
+}
+
+// ─── Sub-components ───────────────────────────────────────────────────────────
+
+function EyebrowBadge({children}: {children: React.ReactNode}) {
   return (
-    <div className="space-y-2">
-      <h3 className="text-lg font-bold">{title}</h3>
-      <p className="text-gray-600 dark:text-gray-400">{text}</p>
+    <div className="inline-flex items-center gap-2 bg-canvas-200 text-primary-700 border border-primary-300 rounded-full px-4 py-1.5 text-sm font-semibold mb-8 animate-fade-up">
+      <span className="w-2 h-2 rounded-full bg-[#6B8F71] inline-block" />
+      {children}
     </div>
   )
 }
+
+function FeatureCard({icon, title, text}: FeatureCardProps) {
+  return (
+    <div
+      className="
+      group relative overflow-hidden
+      bg-canvas-50 border-[1.5px] border-canvas-200 rounded-2xl p-7
+      transition-all duration-200
+      hover:-translate-y-1 hover:shadow-[0_12px_32px_rgba(44,36,22,0.10)] hover:border-[#C17F3E]
+    "
+    >
+      {/* Left accent bar */}
+      <div
+        className="
+        absolute left-0 top-1 bottom-1 w-1 rounded-l-xl bg-[#C17F3E]
+        opacity-0 group-hover:opacity-100 transition-opacity duration-200
+      "
+      />
+
+      <div className="w-11 h-11 rounded-xl bg-canvas-200 border border-canvas-300 flex items-center justify-center text-xl mb-5">
+        {icon}
+      </div>
+      <h3 className="text-base font-bold text-ink-1000 mb-2.5">{title}</h3>
+      <p className="text-sm text-primary-700 leading-relaxed">{text}</p>
+    </div>
+  )
+}
+
+function SocialAvatar({letter, gradient}: SocialAvatarProps) {
+  return (
+    <div
+      className="w-8 h-8 rounded-full border-2 border-[#EDE8E0] -ml-2 first:ml-0 flex items-center justify-center text-xs font-bold text-white flex-shrink-0"
+      style={{background: gradient}}
+    >
+      {letter}
+    </div>
+  )
+}
+
+function SocialProof({label}: {label: React.ReactNode}) {
+  const avatars: SocialAvatarProps[] = [
+    {letter: 'S', gradient: 'linear-gradient(135deg, #C17F3E, #8B5E3C)'},
+    {letter: 'R', gradient: 'linear-gradient(135deg, #6B8F71, #4A7055)'},
+    {letter: 'T', gradient: 'linear-gradient(135deg, #8B5E3C, #6B3E22)'},
+    {letter: 'L', gradient: 'linear-gradient(135deg, #C17F3E, #D4955A)'},
+  ]
+
+  return (
+    <div className="flex items-center gap-3 text-[#8C8070] text-sm">
+      <div className="flex">
+        {avatars.map((av) => (
+          <SocialAvatar key={av.letter} {...av} />
+        ))}
+      </div>
+      <span>{label}</span>
+    </div>
+  )
+}
+
+function QuoteBlock({children}: {children: React.ReactNode}) {
+  return (
+    <div className="relative bg-canvas-50 border-[1.5px] border-canvas-200 rounded-2xl px-10 py-9 text-center max-w-2xl mx-auto mb-14">
+      <span className="absolute top-5 left-8 text-6xl text-primary-700 font-serif leading-none select-none">
+        "
+      </span>
+      <p className="relative z-10 text-base text-primary-700 italic leading-relaxed">{children}</p>
+    </div>
+  )
+}
+
+function OpenSourceStrip({
+  title,
+  description,
+  badges,
+}: {
+  title: string
+  description: string
+  badges: {label: string; url: string; primary?: boolean}[]
+}) {
+  return (
+    <div className="w-full max-w-4xl bg-canvas-950 rounded-2xl px-10 py-8 flex items-center justify-between gap-6 flex-wrap">
+      <div>
+        <h3 className="text-white text-xl font-bold mb-1.5">{title}</h3>
+        <p className="text-white/55 text-sm leading-relaxed">{description}</p>
+      </div>
+      <div className="flex gap-2 flex-wrap flex-shrink-0">
+        {badges.map((b) => (
+          <Link
+            href={b.url}
+            key={b.label}
+            className={`
+              px-4 py-2 rounded-lg text-sm font-semibold border transition-all duration-150
+              ${
+                b.primary
+                  ? 'bg-primary-500 text-white border-[#C17F3E] hover:bg-primary-600'
+                  : 'bg-white/5 text-white/75 border-[rgba(255,255,255,0.12)] hover:bg-white/15 hover:text-white/75'
+              }
+            `}
+          >
+            {b.label}
+          </Link>
+        ))}
+      </div>
+    </div>
+  )
+}
+
+// ─── Typewriter hook ──────────────────────────────────────────────────────────
+
+function useTypewriter(words: string[]) {
+  const elRef = useRef<HTMLSpanElement>(null)
+
+  useEffect(() => {
+    const el = elRef.current
+    if (!el) return
+
+    let wordIndex = 0
+    let charIndex = 0
+    let deleting = false
+    let timeoutId: ReturnType<typeof setTimeout>
+
+    function tick() {
+      const word = words[wordIndex]
+
+      if (!el) return
+
+      if (!deleting) {
+        el.textContent = word.substring(0, charIndex + 1)
+        charIndex++
+        if (charIndex === word.length) {
+          deleting = true
+          timeoutId = setTimeout(tick, 1800)
+          return
+        }
+      } else {
+        el.textContent = word.substring(0, charIndex - 1)
+        charIndex--
+        if (charIndex === 0) {
+          deleting = false
+          wordIndex = (wordIndex + 1) % words.length
+        }
+      }
+
+      timeoutId = setTimeout(tick, deleting ? 60 : 120)
+    }
+
+    timeoutId = setTimeout(tick, 600)
+    return () => clearTimeout(timeoutId)
+  }, [words])
+
+  return elRef
+}
+
+// ─── Main component ───────────────────────────────────────────────────────────
 
 export function LoggedOutHome() {
   const user = useUser()
   const t = useT()
 
-  const typewriterText = t('home.typewriter', 'Search.')
+  const typewriterWords = [
+    t('home.typewriter.search', 'Search.'),
+    t('home.typewriter.connect', 'Connect.'),
+    // t('home.typewriter.belong', 'Belong.'),
+  ]
 
-  useEffect(() => {
-    const text = typewriterText
-    const el = document.getElementById('typewriter')
-    if (!el) return
+  const typewriterRef = useTypewriter(typewriterWords)
 
-    let i = 0
-    let timeoutId: any
-    el.textContent = ''
+  const features: FeatureCardProps[] = [
+    {
+      icon: '🔍',
+      title: t('home.feature1.title', 'Radically Transparent'),
+      text: t(
+        'home.feature1.text',
+        'No algorithms. Every profile fully searchable. You decide who to discover — not a black box.',
+      ),
+    },
+    {
+      icon: '🎯',
+      title: t('home.feature2.title', 'Built for Depth'),
+      text: t(
+        'home.feature2.text',
+        'Filter by values, interests, goals, and keywords — from "stoicism" to "sustainable living." Surface connections that truly matter.',
+      ),
+    },
+    {
+      icon: '🌍',
+      title: t('home.feature3.title', 'Community Owned'),
+      text: t(
+        'home.feature3.text',
+        'Free forever. No ads, no subscriptions. Built by the people who use it, for the benefit of everyone.',
+      ),
+    },
+  ]
 
-    function typeWriter() {
-      if (i < text.length && el) {
-        el.textContent = text.substring(0, i + 1)
-        i++
-        timeoutId = setTimeout(typeWriter, 150)
-      }
-    }
-
-    const startId = setTimeout(typeWriter, 500)
-
-    return () => {
-      clearTimeout(timeoutId)
-      clearTimeout(startId)
-      if (el) el.textContent = text
-    }
-  }, [typewriterText])
+  const openSourceBadges = [
+    {label: t('home.strip.github', '⭐ GitHub'), url: githubRepo},
+    {label: t('home.strip.discord', '📖 Discord'), url: discordLink},
+    {label: t('home.strip.join', 'Join Now →'), url: '/register', primary: true},
+  ]
 
   return (
     <>
+      {/* Mobile sign-up CTA */}
       {user === null && (
         <Col className="mb-4 gap-2 lg:hidden">
           <SignUpButton
@@ -56,57 +240,104 @@ export function LoggedOutHome() {
           />
         </Col>
       )}
-      <h1 className="pt-12 pb-2 text-7xl md:text-8xl xs:text-6xl font-extrabold leading-tight xl:whitespace-nowrap md:whitespace-nowrap text-center">
-        {t('home.title', "Don't Swipe.")}
-        <br />
-        <span id="typewriter"></span>
-        <span id="cursor" className="animate-pulse">
-          |
-        </span>
-      </h1>
-      <div className="py-8"></div>
-      <h3 className="text-2xl font-bold text-center">
-        {t(
-          'home.subtitle',
-          'Find people who share your values, ideas, and intentions — not just your photos.',
-        )}
-      </h3>
-      <div className="w-full py-8 mt-20">
-        <div className="max-w-6xl mx-auto px-4">
-          <div className="grid md:grid-cols-3 gap-8 text-center">
-            <AboutBox
-              title={t('home.feature1.title', 'Radically Transparent')}
-              text={t(
-                'home.feature1.text',
-                'No algorithms. Every profile searchable. You decide who to discover.',
-              )}
-            />
-            <AboutBox
-              title={t('home.feature2.title', 'Built for Depth')}
-              text={t(
-                'home.feature2.text',
-                'Search and filter by values, interests, goals, and keywords — from “stoicism” to “sustainable living.” Surface the connections that truly matter.',
-              )}
-            />
-            <AboutBox
-              title={t('home.feature3.title', 'Community Owned & Open Source')}
-              text={t(
-                'home.feature3.text',
-                'Free forever. No ads, no subscriptions. Built by the people who use it, for the benefit of everyone.',
-              )}
-            />
+
+      <div className="flex flex-col items-center w-full px-4 pb-16">
+        {/* ── Hero ── */}
+        <section className="flex flex-col items-center text-center max-w-3xl w-full pt-16 pb-12">
+          <EyebrowBadge>
+            {t('home.eyebrow', 'Free forever · Open source · No matching algorithms')}
+          </EyebrowBadge>
+
+          <h1 className="text-[clamp(52px,8vw,96px)] font-black leading-none tracking-tight mb-2">
+            {t('home.title', "Don't Swipe.")}
+          </h1>
+
+          {/* Typewriter line */}
+          <div className="text-[clamp(52px,8vw,96px)] font-black leading-none tracking-tight text-primary-500 mb-9 flex items-center justify-center min-h-[1.1em]">
+            <span ref={typewriterRef} />
+            <span className="animate-pulse ml-0.5 font-light">|</span>
           </div>
-          <div className="mt-10 max-w-xl mx-auto">
-            <p className="text-center">
-              {t(
-                'home.bottom',
-                'Compass is to human connection what Linux is to software, Wikipedia is to knowledge, and Firefox is to browsing — a public digital good designed to serve people, not profit.',
-              )}
-            </p>
+
+          <p className="text-[clamp(17px,2.2vw,22px)] text-[#8C8070] leading-relaxed max-w-xl mb-10">
+            {t('home.subtitle', 'Find people who share your ')}
+            <strong className="text-ink-1000">{t('home.subtitle.values', 'values')}</strong>
+            {', '}
+            <strong className="text-ink-1000">{t('home.subtitle.ideas', 'ideas')}</strong>
+            {t('home.subtitle.and', ', and ')}
+            <strong className="text-ink-1000">{t('home.subtitle.intentions', 'intentions')}</strong>
+            {t('home.subtitle.end', ' — not just your photos.')}
+          </p>
+
+          {/* CTAs */}
+          <div className="flex gap-3 flex-wrap justify-center mb-10">
+            {/*<button className="px-8 py-3.5 rounded-xl bg-primary-500 text-white font-bold text-[15px] shadow-[0_4px_16px_rgba(193,127,62,0.35)] hover:bg-[#A86D30] hover:-translate-y-0.5 hover:shadow-[0_8px_24px_rgba(193,127,62,0.4)] transition-all duration-150">*/}
+            {/*  {t('home.cta.primary', 'Explore People →')}*/}
+            {/*</button>*/}
+            <Link
+              href={'/about'}
+              className="px-7 py-3.5 rounded-xl bg-transparent text-[#8B5E3C] font-semibold text-[15px] border-2 border-canvas-200 hover:border-primary-500 hover:text-primary-500 hover:-translate-y-0.5 transition-all duration-150"
+            >
+              {t('home.cta.secondary', 'Learn how it works')}
+            </Link>
           </div>
-        </div>
+
+          {/* Social proof */}
+          <SocialProof
+            label={
+              <>
+                {t('home.proof.prefix', 'Joined by ')}
+                <strong className="text-ink-1000">{t('home.proof.count', '600+')}</strong>
+                {t('home.proof.suffix', ' real people worldwide')}
+              </>
+            }
+          />
+        </section>
+
+        {/* Divider */}
+        <div className="w-full max-w-3xl h-px bg-gradient-to-r from-transparent via-[#D8D0C4] to-transparent mb-14" />
+
+        {/* ── Features ── */}
+        <section className="w-full max-w-4xl mb-14">
+          <p className="text-center text-xs font-bold tracking-[1.5px] uppercase text-primary-500 mb-3">
+            {t('home.features.label', 'Why Compass')}
+          </p>
+          <h2 className="text-center text-[clamp(24px,3vw,32px)] font-extrabold text-ink-1000 tracking-tight mb-10">
+            {t('home.features.title', 'Built different. On purpose.')}
+          </h2>
+          <div className="grid md:grid-cols-3 gap-5">
+            {features.map((f) => (
+              <FeatureCard key={f.title} {...f} />
+            ))}
+          </div>
+        </section>
+
+        {/* ── Quote ── */}
+        <QuoteBlock>
+          {t('home.quote.prefix', 'Compass is to human connection what ')}
+          <strong className="text-ink-1000">{t('home.quote.linux', 'Linux')}</strong>
+          {t('home.quote.linux_suffix', ' is to software, ')}
+          <strong className="text-ink-1000">{t('home.quote.wikipedia', 'Wikipedia')}</strong>
+          {t('home.quote.wikipedia_suffix', ' is to knowledge, and ')}
+          <strong className="text-ink-1000">{t('home.quote.firefox', 'Firefox')}</strong>
+          {t('home.quote.end', ' is to browsing — a public digital good designed to ')}
+          <strong className="text-ink-1000">
+            {t('home.quote.mission', 'serve people, not profit.')}
+          </strong>
+        </QuoteBlock>
+
+        {/* ── Open source strip ── */}
+        <OpenSourceStrip
+          title={t('home.strip.title', 'Open Source & Free Forever')}
+          description={t(
+            'home.strip.description',
+            'No venture capital. No ads. No subscription fees. Built transparently by the community, for the community.',
+          )}
+          badges={openSourceBadges}
+        />
       </div>
-      <div className="block lg:hidden h-12"></div>
+
+      {/* Mobile bottom spacing */}
+      <div className="block lg:hidden h-12" />
     </>
   )
 }

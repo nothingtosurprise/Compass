@@ -135,7 +135,7 @@
     --color-canvas-800: 50 50 50;
     --color-canvas-900: 68 52 34; /* Sidebar pressed */
     --color-canvas-950: 44 36 22; /* Sidebar - Dark Espresso (#2C2416) */
-    --color-canvas-1000: 0 0 0; /* black */
+    --color-canvas-1000: 44 36 22; /* black */
 
     /* Primary - Warm Amber */
     --color-primary-50: 250 243 233; /* #FAF3E9 */
@@ -249,6 +249,7 @@
     --color-canvas-200: 68 52 34; /* UI Elements/Tags */
     --color-canvas-300: 78 62 44;
     --color-canvas-950: 15 13 10; /* Deepest depth (Sidebar/Bottom) */
+    --color-canvas-1000: 247 244 239; /* Deepest depth (Sidebar/Bottom) */
 
     /* Dark Mode Primary - Luminous Amber */
     --color-primary-50: 43 21 8; /* Deepest Shadow (Old 950) */

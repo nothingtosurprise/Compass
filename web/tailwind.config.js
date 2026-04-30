@@ -332,6 +332,7 @@ module.exports = {
           800: 'rgb(var(--color-canvas-800) / <alpha-value>)',
           900: 'rgb(var(--color-canvas-900) / <alpha-value>)',
           950: 'rgb(var(--color-canvas-950) / <alpha-value>)',
+          1000: 'rgb(var(--color-canvas-1000) / <alpha-value>)',
         },
 
         primary: {
