@@ -2,6 +2,7 @@ import {discordLink, githubRepo} from 'common/constants'
 import Link from 'next/link'
 import {useEffect, useRef} from 'react'
 import {Col} from 'web/components/layout/col'
+import {Row} from 'web/components/layout/row'
 import {SignUpButton} from 'web/components/nav/sidebar'
 import {useUser} from 'web/hooks/use-user'
 import {useT} from 'web/lib/locale'
@@ -24,7 +25,7 @@ interface SocialAvatarProps {
 function EyebrowBadge({children}: {children: React.ReactNode}) {
   return (
     <div className="inline-flex items-center gap-2 bg-canvas-200 text-primary-700 border border-primary-300 rounded-full px-4 py-1.5 text-sm font-semibold mb-8 animate-fade-up">
-      <span className="w-2 h-2 rounded-full bg-[#6B8F71] inline-block" />
+      {/*<span className="w-2 h-2 rounded-full bg-[#6B8F71] inline-block" />*/}
       {children}
     </div>
   )
@@ -106,7 +107,7 @@ function OpenSourceStrip({
         <h3 className="text-white text-xl font-bold mb-1.5">{title}</h3>
         <p className="text-white/55 text-sm leading-relaxed">{description}</p>
       </div>
-      <div className="flex gap-2 flex-wrap flex-shrink-0">
+      <Row className="flex flex-wrap gap-4">
         {badges.map((b) => (
           <Link
             href={b.url}
@@ -123,7 +124,7 @@ function OpenSourceStrip({
             {b.label}
           </Link>
         ))}
-      </div>
+      </Row>
     </div>
   )
 }
