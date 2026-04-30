@@ -109,10 +109,10 @@ function OpenSourceStrip({
   badges: {label: string; url: string; primary?: boolean}[]
 }) {
   return (
-    <div className="w-full max-w-4xl bg-canvas-950 dark:bg-[#F7F4EF] rounded-2xl px-10 py-8 flex items-center justify-between gap-6 flex-wrap">
+    <div className="w-full max-w-3xl bg-canvas-950 dark:bg-canvas-300 rounded-2xl px-10 py-8 flex items-center justify-between gap-6 flex-wrap">
       <div>
-        <h3 className="text-ink-100 text-xl font-bold mb-1.5">{title}</h3>
-        <p className="text-ink-100/55 text-sm leading-relaxed">{description}</p>
+        <h3 className="text-white text-xl font-bold mb-1.5">{title}</h3>
+        <p className="text-white/55 text-sm leading-relaxed">{description}</p>
       </div>
       <div className="flex gap-2 flex-wrap flex-shrink-0">
         {badges.map((b) => (
@@ -124,7 +124,7 @@ function OpenSourceStrip({
               ${
                 b.primary
                   ? 'bg-primary-500 text-white border-[#C17F3E] hover:bg-primary-600'
-                  : 'bg-primary-500/30 text-ink-100/75 border-primary-500/30 hover:bg-primary-500/50 hover:text-ink-100/75'
+                  : 'bg-primary-500/30 text-white/75 border-primary-500/30 hover:bg-primary-500/50'
               }
             `}
           >
