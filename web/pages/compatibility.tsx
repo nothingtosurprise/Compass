@@ -138,7 +138,7 @@ export default function CompatibilityPage() {
               ref={searchInputRef}
               value={searchTerm}
               placeholder={t('compatibility.search_placeholder', 'Search questions and answers...')}
-              className={'w-full max-w-xs'}
+              className={'w-[200px] xl:w-[400px]'}
               onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
                 setSearchTerm(e.target.value)
               }}
@@ -284,7 +284,7 @@ function QuestionList({
         <div
           key={q.id}
           className={clsx(
-            'bg-canvas-50 border-canvas-100 rounded-lg border px-2 pt-2 shadow-sm transition-colors',
+            'border-canvas-100 rounded-lg border px-2 pt-2 shadow-sm transition-colors',
             isLoading && 'animate-pulse opacity-80',
           )}
         >
