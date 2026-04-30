@@ -10,7 +10,7 @@ export const AboutBlock = (props: {text: ReactNode; title: string}) => {
   const {text, title} = props
   return (
     <section className="mb-12 px-4 pb-4 bg-canvas-50 border border-canvas-200 rounded-xl shadow-xl">
-      <h2 className="text-3xl font-bold mb-4">{title}</h2>
+      <h2 className="text-primary-600 text-3xl font-bold mb-4">{title}</h2>
       <p className="text-lg">{text}</p>
     </section>
   )
@@ -25,7 +25,7 @@ export default function About() {
         description={t('about.seo.description', 'About Compass')}
         url={`/about`}
       />
-      <div className="text-gray-600 dark:text-white min-h-screen p-6">
+      <div className="min-h-screen p-6">
         <div className="w-full">
           <div className="relative py-8 mb-8 overflow-hidden">
             <div className="relative z-10 max-w-3xl mx-auto px-4">
@@ -34,7 +34,7 @@ export default function About() {
               </h1>
               <div className="flex flex-col md:flex-row items-center justify-center mb-8 gap-8">
                 <div className="w-full text-center">
-                  <h3 className="text-3xl mb-2">
+                  <h3 className="text-primary-600 text-3xl mb-2">
                     {t('about.subtitle', 'To find your people with ease.')}
                   </h3>
                 </div>
@@ -134,7 +134,7 @@ export default function About() {
                 <div className="rounded-xl shadow p-6 flex flex-col items-center bg-canvas-50">
                   <h5
                     id="give-suggestions-or-contribute"
-                    className="font-bold mb-4 text-xl text-center"
+                    className="font-bold mb-4 text-xl text-center text-primary-600"
                   >
                     {t('about.suggestions.title', 'Give Suggestions or Contribute')}
                   </h5>
@@ -150,7 +150,7 @@ export default function About() {
                   />
                 </div>
                 <div className="rounded-xl shadow p-6 flex flex-col items-center bg-canvas-50">
-                  <h5 id="share" className="font-bold mb-4 text-xl text-center">
+                  <h5 id="share" className="font-bold mb-4 text-xl text-center text-primary-600">
                     {t('about.dev.title', 'Develop the App')}
                   </h5>
                   <p className="mb-4 text-center">
@@ -162,7 +162,10 @@ export default function About() {
                   <GeneralButton url={githubRepo} content={t('about.dev.button', 'View Code')} />
                 </div>
                 <div className="rounded-xl shadow p-6 flex flex-col items-center bg-canvas-50">
-                  <h5 id="join-chats" className="font-bold mb-4 text-xl text-center">
+                  <h5
+                    id="join-chats"
+                    className="font-bold mb-4 text-xl text-center text-primary-600"
+                  >
                     {t('about.join.title', 'Join the Community')}
                   </h5>
                   <p className="mb-4 text-center">
@@ -183,7 +186,7 @@ export default function About() {
                   </div>
                 </div>
                 <div className="rounded-xl shadow p-6 flex flex-col items-center bg-canvas-50">
-                  <h5 id="donate" className="font-bold mb-4 text-xl text-center">
+                  <h5 id="donate" className="font-bold mb-4 text-xl text-center text-primary-600">
                     {t('about.donate.title', 'Donate')}
                   </h5>
                   <p className="mb-4 text-center custom-link">
