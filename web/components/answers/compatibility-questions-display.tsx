@@ -583,28 +583,26 @@ export function CompatibilityAnswerBlock(props: {
             ))}
         </Row>
       )}
-      {/*{isAnswered && (*/}
-      {/*  <Col>*/}
-      {/*    {comparedProfile && isAnswered && (*/}
-      {/*      <Row className="w-full justify-end sm:hidden">*/}
-      {/*        <CompatibilityDisplay*/}
-      {/*          question={question}*/}
-      {/*          profile1={profile}*/}
-      {/*          answer1={answer}*/}
-      {/*          profile2={comparedProfile as Profile}*/}
-      {/*          currentUserIsComparedProfile={!fromProfilePage}*/}
-      {/*          currentUser={currentUser}*/}
-      {/*        />*/}
-      {/*      </Row>*/}
-      {/*    )}*/}
-      {/*    {isCurrentUser && isAnswered && (*/}
-      {/*      <Row className="w-full justify-end sm:hidden">*/}
-      {/*        <ImportanceButton importance={answer.importance} onClick={() => setEditOpen(true)} />*/}
-      {/*      </Row>*/}
-      {/*    )}*/}
-      {/*    /!*{question.importance_score == 0 && <div className="text-ink-500 text-sm">Core Question</div>}*!/*/}
-      {/*  </Col>*/}
-      {/*)}*/}
+      <Col className={'sm:hidden'}>
+        {comparedProfile && isAnswered && (
+          <Row className="w-full justify-end sm:hidden">
+            <CompatibilityDisplay
+              question={question}
+              profile1={profile}
+              answer1={answer}
+              profile2={comparedProfile as Profile}
+              currentUserIsComparedProfile={!fromProfilePage}
+              currentUser={currentUser}
+            />
+          </Row>
+        )}
+        {isCurrentUser && isAnswered && (
+          <Row className="w-full justify-end sm:hidden">
+            <ImportanceButton importance={answer.importance} onClick={() => setEditOpen(true)} />
+          </Row>
+        )}
+        {/*{question.importance_score == 0 && <div className="text-ink-500 text-sm">Core Question</div>}*/}
+      </Col>
       {showCommunityInfo && (
         <Row className={''}>
           {shortenedPopularity && (
