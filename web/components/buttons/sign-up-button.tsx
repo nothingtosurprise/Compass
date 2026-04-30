@@ -49,7 +49,7 @@ export function GoogleButton({onClick, isLoading = false, ...props}: GoogleButto
       className={clsx(
         'w-full flex items-center justify-center gap-2 py-2 px-4 border border-gray-300',
         'rounded-full shadow-sm text-sm font-medium',
-        'hover:bg-canvas-25 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500',
+        'hover:bg-canvas-25 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary-500',
         'disabled:opacity-70 disabled:cursor-not-allowed',
       )}
       {...props}

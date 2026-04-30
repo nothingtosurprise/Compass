@@ -452,7 +452,9 @@ export function CompatibilityAnswerBlock(props: {
   return (
     <Col
       data-testid="profile-compatibility-section"
-      className={'bg-canvas-50 flex-grow gap-4 whitespace-pre-line rounded-xl p-4 leading-relaxed'}
+      className={
+        'bg-canvas-50 border border-canvas-200 flex-grow gap-4 whitespace-pre-line rounded-xl p-4 leading-relaxed'
+      }
     >
       <Row
         className="justify-between gap-1 font-semibold"

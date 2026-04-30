@@ -231,7 +231,7 @@ export const Search = forwardRef<
                 setOpenBookmarks(true)
               })
             }}
-            size={'xs'}
+            // size={'xs'}
             color={'none'}
             className={'text-white bg-primary-500 hover:bg-primary-400 rounded-xl'}
           >

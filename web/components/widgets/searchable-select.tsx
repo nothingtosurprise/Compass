@@ -64,7 +64,6 @@ export function SearchableSelect(props: {
                 onChange={(e: any) => setQuery(e.target.value)}
                 placeholder="Search..."
                 className="mb-2 w-full"
-                searchIcon
               />
               <div className="max-h-48 space-y-1 overflow-auto">
                 {filteredSuggestions.map((suggestion) => (

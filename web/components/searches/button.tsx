@@ -36,7 +36,7 @@ export function BookmarkSearchButton(props: {
       <Button
         onClick={() => setOpen(true)}
         color="gray-outline"
-        size={'xs'}
+        // size={'xs'}
         className={'rounded-xl bg-canvas-50'}
       >
         ⭐ {t('saved_searches.button', 'Saved Searches')}
@@ -164,7 +164,7 @@ export function BookmarkStarButton(props: {
       <Button
         onClick={() => setOpen(true)}
         color="gray-outline"
-        size={'xs'}
+        // size={'xs'}
         className={'rounded-xl bg-canvas-50'}
       >
         👥 {t('saved_people.button', 'Saved People')}

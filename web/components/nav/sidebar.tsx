@@ -2,8 +2,8 @@ import {ArrowLeftOnRectangleIcon, ArrowRightOnRectangleIcon} from '@heroicons/re
 import clsx from 'clsx'
 import {ANDROID_APP_URL} from 'common/constants'
 import {buildArray} from 'common/util/array'
-import Image from 'next/image'
 import Router, {useRouter} from 'next/router'
+import {FaGooglePlay} from 'react-icons/fa'
 import {Button, ColorType, SizeType} from 'web/components/buttons/button'
 import {LanguagePicker} from 'web/components/language/language-picker'
 import {useProfile} from 'web/hooks/use-profile'
@@ -49,7 +49,7 @@ export default function Sidebar(props: {
       )}
       style={style}
     >
-      <SiteLogo className={'text-white'} />
+      <SiteLogo className={'text-black invert'} />
 
       {user === undefined && <div className="h-[24px]" />}
 
@@ -78,16 +78,23 @@ export default function Sidebar(props: {
       <div className="mb-[12px] mt-auto flex flex-col gap-1">
         <div className="h-px bg-canvas-900" />
         {!isAndroid && (
-          <Image
-            src="https://firebasestorage.googleapis.com/v0/b/compass-130ba.firebasestorage.app/o/misc%2FGoogle_Play_Store_badge_EN.svg.png?alt=media&token=3e0e8605-800a-422b-84d1-8ecec8af3e80"
-            alt="divider"
-            width={160}
-            height={80}
-            className="mx-auto pt-4 hover:opacity-70 cursor-pointer"
-            onClick={() => router.push(ANDROID_APP_URL)}
+          <SidebarItem
+            item={{
+              key: 'nav.android_app',
+              name: 'Get it on Google Play',
+              icon: FaGooglePlay,
+              href: ANDROID_APP_URL,
+            }}
+            currentPage={currentPage}
           />
         )}
-        {user === null && <LanguagePicker className={'w-fit mx-3 pr-12 mb-2'} />}
+        {user === null && (
+          <LanguagePicker
+            className={
+              'w-fit mx-3 mt-2 pr-12 mb-2 bg-transparent border-canvas-900 sidebar-text hover:text-primary-600'
+            }
+          />
+        )}
         {bottomNavOptions.map((item) => (
           <SidebarItem key={item.key} item={item} currentPage={currentPage} />
         ))}

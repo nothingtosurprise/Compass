@@ -8,7 +8,7 @@ export default function SiteLogo(props: {noLink?: boolean; className?: string}) 
   const {noLink, className} = props
   const inner = (
     <>
-      <FavIconBlack className="dark:invert" />
+      <FavIconBlack className={className?.includes('invert') ? '' : 'dark:invert'} />
       <div className={clsx('my-auto text-xl font-thin logo')}>
         {IS_PROD ? 'Compass' : 'Compass dev'}
       </div>

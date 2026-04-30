@@ -28,7 +28,7 @@ export function SidebarItem(props: {item: Item; currentPage?: string}) {
   }
 
   const sidebarClass = clsx(
-    isCurrentPage ? 'bg-canvas-900 text-primary-600' : 'text-[#776f65] hover:text-primary-700',
+    isCurrentPage ? 'bg-canvas-900 text-primary-600' : 'sidebar-text hover:text-primary-600',
     'group flex items-center rounded-xl px-3 py-2 text-sm font-medium',
     'focus-visible:bg-ink-100 outline-none transition-all',
   )

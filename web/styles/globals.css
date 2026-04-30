@@ -568,3 +568,7 @@ select {
   @apply hover-bold;
   @apply cursor-pointer;
 }
+
+.sidebar-text {
+  color: #978f85;
+}

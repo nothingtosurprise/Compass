@@ -75,7 +75,7 @@ export const ViewProfileCardButton = (props: {
   const username = user.username
   return (
     <>
-      <Button onClick={() => setOpen(true)}>
+      <Button onClick={() => setOpen(true)} className={'bg-canvas-50 '}>
         {t('share_profile.view_profile_card', 'View Profile Card')}
       </Button>
       <Modal open={open} setOpen={setOpen} size={'lg'} className={''}>

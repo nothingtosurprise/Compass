@@ -94,7 +94,7 @@ export const RequiredProfileUserForm = (props: {
       {/*)}*/}
       <Col className={'gap-8 pb-[env(safe-area-inset-bottom)] w-fit'}>
         {(step === 0 || profileCreatedAlready) && (
-          <Col>
+          <Col className={'gap-2'}>
             <label className={clsx(labelClassName)}>
               {t('profile.basics.display_name', 'Display name')}
             </label>
