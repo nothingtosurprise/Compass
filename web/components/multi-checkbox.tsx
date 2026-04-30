@@ -129,6 +129,7 @@ export const MultiCheckbox = (props: {
               }
             }}
             className="h-10"
+            searchIcon
           />
           <Button size="sm" onClick={submitAdd} loading={adding} disabled={adding}>
             {t('common.add', 'Add')}

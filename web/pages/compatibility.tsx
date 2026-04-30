@@ -142,6 +142,7 @@ export default function CompatibilityPage() {
               onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
                 setSearchTerm(e.target.value)
               }}
+              searchIcon
             />
             <Checkbox
               label={t('compatibility.pinned_only', 'Pinned only')}

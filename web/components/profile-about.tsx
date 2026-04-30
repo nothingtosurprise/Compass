@@ -20,7 +20,6 @@ import {formatHeight, MeasurementSystem} from 'common/measurement-utils'
 import {Profile} from 'common/profiles/profile'
 import {Socials} from 'common/socials'
 import {UserActivity} from 'common/user'
-import {capitalize} from 'lodash'
 import {
   BarChart2,
   Brain,
@@ -91,7 +90,7 @@ export function AboutRow(props: {
       <div className="text-ink-600 w-5 mt-0.5">{icon}</div>
       <Col className={'w-full'}>
         {children}
-        {suffix && <div className={'guidance'}>{capitalize(suffix)}</div>}
+        {suffix && <div className={'guidance'}>{suffix}</div>}
       </Col>
     </Row>
   )

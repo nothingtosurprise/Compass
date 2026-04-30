@@ -77,7 +77,7 @@ export function HideProfileButton(props: HideProfileButtonProps) {
     >
       <button
         className={clsx(
-          'rounded-full p-1 hover:bg-canvas-200 shadow focus:outline-none',
+          'border border-canvas-200 rounded-md p-1 hover:bg-canvas-200 focus:outline-none',
           className,
         )}
         disabled={submitting}

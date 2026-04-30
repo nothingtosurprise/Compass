@@ -39,7 +39,11 @@ export function StatBox(props: StatBoxProps) {
         className,
       )}
     >
-      <div className={clsx('font-semibold leading-none tracking-tight', sizeClass)}>{value}</div>
+      <div
+        className={clsx('font-semibold leading-none tracking-tight text-primary-800', sizeClass)}
+      >
+        {value}
+      </div>
       {label && <div className="text-ink-700 text-sm">{label}</div>}
       {children}
     </Card>

@@ -84,6 +84,7 @@ export function SelectUsers(props: {
               value={query}
               onChange={(e: React.ChangeEvent<HTMLInputElement>) => setQuery(e.target.value)}
               placeholder="Search users..."
+              searchIcon
             />
           </Col>
           {queryReady && (

@@ -49,26 +49,23 @@ export default function Sidebar(props: {
       )}
       style={style}
     >
-      <SiteLogo className={'invert'} />
+      <SiteLogo className={'text-white'} />
 
       {user === undefined && <div className="h-[24px]" />}
 
-      {user && !isMobile && <ProfileSummary user={user} className="mb-3 text-white" />}
+      {user && !isMobile && (
+        <>
+          <div className="h-px bg-canvas-900 mb-4" />
+          <ProfileSummary user={user} className="mb-3 text-white" />
+        </>
+      )}
+
+      <div className="h-px bg-canvas-900 mb-4" />
 
       <div className="mb-4 flex flex-col gap-1 !overflow-y-auto">
         {navOptions.map((item) => (
           <SidebarItem key={item.key} item={item} currentPage={currentPage} />
         ))}
-        {!isAndroid && (
-          <Image
-            src="https://firebasestorage.googleapis.com/v0/b/compass-130ba.firebasestorage.app/o/misc%2FGoogle_Play_Store_badge_EN.svg.png?alt=media&token=3e0e8605-800a-422b-84d1-8ecec8af3e80"
-            alt="divider"
-            width={160}
-            height={80}
-            className="mx-auto pt-4 hover:opacity-70 cursor-pointer"
-            onClick={() => router.push(ANDROID_APP_URL)}
-          />
-        )}
 
         {user === null && <SignUpButton className="mt-4" text={t('nav.sign_up', 'Sign up')} />}
 
@@ -79,6 +76,17 @@ export default function Sidebar(props: {
         )}
       </div>
       <div className="mb-[12px] mt-auto flex flex-col gap-1">
+        <div className="h-px bg-canvas-900" />
+        {!isAndroid && (
+          <Image
+            src="https://firebasestorage.googleapis.com/v0/b/compass-130ba.firebasestorage.app/o/misc%2FGoogle_Play_Store_badge_EN.svg.png?alt=media&token=3e0e8605-800a-422b-84d1-8ecec8af3e80"
+            alt="divider"
+            width={160}
+            height={80}
+            className="mx-auto pt-4 hover:opacity-70 cursor-pointer"
+            onClick={() => router.push(ANDROID_APP_URL)}
+          />
+        )}
         {user === null && <LanguagePicker className={'w-fit mx-3 pr-12 mb-2'} />}
         {bottomNavOptions.map((item) => (
           <SidebarItem key={item.key} item={item} currentPage={currentPage} />

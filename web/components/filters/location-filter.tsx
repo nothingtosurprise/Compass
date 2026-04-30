@@ -120,6 +120,7 @@ export function LocationFilter(props: {
           className="h-8 w-full rounded-none border-0 bg-transparent px-1 focus:border-b focus:ring-0 focus:ring-transparent"
           autoFocus
           // onBlur // TODO
+          searchIcon
         />
       </Row>
 

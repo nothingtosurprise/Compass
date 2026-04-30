@@ -7,10 +7,11 @@ export const Input = forwardRef(
   (
     props: {
       error?: boolean
+      searchIcon?: boolean
     } & ComponentPropsWithoutRef<'input'>,
     ref: Ref<HTMLInputElement>,
   ) => {
-    const {error, className, ...rest} = props
+    const {error, searchIcon, className, ...rest} = props
 
     return (
       <Row
@@ -22,7 +23,7 @@ export const Input = forwardRef(
           className,
         )}
       >
-        <span className="search-icon">🔍</span>
+        {searchIcon && <span className="search-icon">🔍</span>}
         <input
           ref={ref}
           step={0.001} // default to 3 decimal places
@@ -30,7 +31,7 @@ export const Input = forwardRef(
             'bg-canvas-50 invalid:border-error invalid:text-error  invalid:placeholder-rose-700 focus:outline-none focus:ring-1 disabled:cursor-not-allowed md:text-sm [&::-webkit-inner-spin-button]:appearance-none [&::-webkit-outer-spin-button]:appearance-none [&::-webkit-inner-spin-button]:m-0 [&::-webkit-outer-spin-button]:m-0',
             error
               ? 'border-error text-error focus:border-error focus:ring-error placeholder-rose-700' // matches invalid: styles
-              : '',
+              : 'border-transparent focus:border-transparent focus:ring-transparent',
             className,
           )}
           {...rest}

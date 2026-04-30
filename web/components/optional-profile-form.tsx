@@ -849,7 +849,7 @@ export const OptionalProfileUserForm = (props: {
             onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
               setProfile('political_details', e.target.value)
             }
-            className={'w-full sm:w-96'}
+            className={'w-full sm:w-[700px]'}
             value={profile['political_details'] ?? undefined}
           />
         </Col>
@@ -873,7 +873,7 @@ export const OptionalProfileUserForm = (props: {
             onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
               setProfile('religious_beliefs', e.target.value)
             }
-            className={'w-full sm:w-96'}
+            className={'w-full sm:w-[700px]'}
             value={profile['religious_beliefs'] ?? undefined}
           />
         </Col>
@@ -1220,6 +1220,7 @@ const CitySearchBox = (props: {onCitySelected: (city: City | undefined) => void}
           // Set to the best guess (first city) if no option selected
           if (cities.length > 0) props.onCitySelected(cities[0])
         }}
+        searchIcon
       />
       <div className="relative w-full" ref={dropdownRef}>
         <Col className="bg-canvas-50 absolute left-0 right-0 top-1 z-10 w-full overflow-hidden rounded-md">

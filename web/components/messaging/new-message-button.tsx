@@ -20,7 +20,11 @@ export default function NewMessageButton() {
   const t = useT()
   return (
     <>
-      <Button className="h-fit gap-1" color={'gray-outline'} onClick={() => setOpen(true)}>
+      <Button
+        className="h-fit gap-1 bg-canvas-50"
+        color={'gray-outline'}
+        onClick={() => setOpen(true)}
+      >
         <PlusIcon className="h-5 w-5" aria-hidden="true" />
         {t('messages.new_message', 'New Message')}
       </Button>

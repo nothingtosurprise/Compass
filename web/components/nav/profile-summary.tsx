@@ -15,7 +15,7 @@ export function ProfileSummary(props: {user: User; className?: string}) {
       href={profile === null ? '/signup' : `/${user.username}`}
       onClick={trackCallback('sidebar: profile')}
       className={clsx(
-        'hover:bg-ink-100 text-ink-700 group flex w-full shrink-0 flex-row items-center truncate rounded-md py-3',
+        'hover:bg-canvas-900 text-ink-700 group flex w-full shrink-0 flex-row items-center truncate rounded-xl py-3',
         className,
       )}
     >

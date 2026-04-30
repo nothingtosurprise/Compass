@@ -171,6 +171,7 @@ export const Search = forwardRef<
           onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
             setKeywordInput(e.target.value)
           }}
+          searchIcon
         />
 
         <Row className="gap-2">
@@ -232,7 +233,7 @@ export const Search = forwardRef<
             }}
             size={'xs'}
             color={'none'}
-            className={'text-ink-100 bg-primary-500 hover:bg-primary-400 rounded-xl'}
+            className={'text-white bg-primary-500 hover:bg-primary-400 rounded-xl'}
           >
             🔔
             {bookmarked

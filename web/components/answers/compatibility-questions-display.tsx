@@ -254,7 +254,7 @@ export function CompatibilityQuestionsDisplay(props: {
       )}
       <Row className="flex-wrap items-center justify-between gap-x-6 gap-y-4">
         {answeredQuestions.length > 0 && (
-          <div className="relative mt-3">
+          <div className="relative mt-3 w-full max-w-[50%] xl:max-w-[600px]">
             {/*<input*/}
             {/*  type="text"*/}
             {/*  placeholder={t('answers.search_placeholder', 'Search prompts...')}*/}
@@ -268,10 +268,11 @@ export function CompatibilityQuestionsDisplay(props: {
             <Input
               value={searchTerm}
               placeholder={t('answers.search_placeholder', 'Search prompts...')}
-              className={'w-48 xs:w-64'}
+              className={'w-full'}
               onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
                 setSearchTerm(e.target.value)
               }}
+              searchIcon
             />
           </div>
         )}
@@ -451,9 +452,7 @@ export function CompatibilityAnswerBlock(props: {
   return (
     <Col
       data-testid="profile-compatibility-section"
-      className={
-        'bg-canvas-50 flex-grow gap-4 whitespace-pre-line rounded-xl px-3 py-2 leading-relaxed'
-      }
+      className={'bg-canvas-50 flex-grow gap-4 whitespace-pre-line rounded-xl p-4 leading-relaxed'}
     >
       <Row
         className="justify-between gap-1 font-semibold"
@@ -582,28 +581,30 @@ export function CompatibilityAnswerBlock(props: {
             ))}
         </Row>
       )}
-      <Col>
-        {comparedProfile && isAnswered && (
-          <Row className="w-full justify-end sm:hidden">
-            <CompatibilityDisplay
-              question={question}
-              profile1={profile}
-              answer1={answer}
-              profile2={comparedProfile as Profile}
-              currentUserIsComparedProfile={!fromProfilePage}
-              currentUser={currentUser}
-            />
-          </Row>
-        )}
-        {isCurrentUser && isAnswered && (
-          <Row className="w-full justify-end sm:hidden">
-            <ImportanceButton importance={answer.importance} onClick={() => setEditOpen(true)} />
-          </Row>
-        )}
-        {/*{question.importance_score == 0 && <div className="text-ink-500 text-sm">Core Question</div>}*/}
-      </Col>
+      {/*{isAnswered && (*/}
+      {/*  <Col>*/}
+      {/*    {comparedProfile && isAnswered && (*/}
+      {/*      <Row className="w-full justify-end sm:hidden">*/}
+      {/*        <CompatibilityDisplay*/}
+      {/*          question={question}*/}
+      {/*          profile1={profile}*/}
+      {/*          answer1={answer}*/}
+      {/*          profile2={comparedProfile as Profile}*/}
+      {/*          currentUserIsComparedProfile={!fromProfilePage}*/}
+      {/*          currentUser={currentUser}*/}
+      {/*        />*/}
+      {/*      </Row>*/}
+      {/*    )}*/}
+      {/*    {isCurrentUser && isAnswered && (*/}
+      {/*      <Row className="w-full justify-end sm:hidden">*/}
+      {/*        <ImportanceButton importance={answer.importance} onClick={() => setEditOpen(true)} />*/}
+      {/*      </Row>*/}
+      {/*    )}*/}
+      {/*    /!*{question.importance_score == 0 && <div className="text-ink-500 text-sm">Core Question</div>}*!/*/}
+      {/*  </Col>*/}
+      {/*)}*/}
       {showCommunityInfo && (
-        <Row className={'mt-[-10px]'}>
+        <Row className={''}>
           {shortenedPopularity && (
             <Tooltip
               text={t(

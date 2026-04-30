@@ -311,8 +311,6 @@ function ProfilePreview(props: {
     large: 'flex-col',
   }[cardSize ?? 'medium']
 
-  const hover = 'hover:bg-gray-50 dark:hover:bg-gray-800/50'
-
   return (
     <div
       className={clsx(
@@ -327,13 +325,21 @@ function ProfilePreview(props: {
         onPointerUp={handlePointerUp}
         onClick={handleClick}
         className={clsx(
+          'relative overflow-hidden rounded-lg bg-canvas-50 person-card',
+          'border-[1.5px] border-[#E4DDD4]',
+          'transition-all duration-[120ms] ease-in',
+          'before:absolute before:left-0 before:top-0 before:bottom-0 before:w-[4px]',
+          'before:bg-[#C17F3E] before:rounded-l-lg',
+          'before:opacity-0 before:transition-opacity before:duration-[120ms]',
+          'hover:before:opacity-100',
+          'hover:bg-canvas-100',
           'relative z-10 cursor-pointer group block rounded-lg overflow-hidden bg-transparent h-full border border-canvas-300',
-          hover,
+          // hover,
         )}
       >
         {/* Phase 1: Dim overlay */}
         {isLoading && (
-          <div className="absolute inset-0 bg-canvas-50/[0.32] rounded-lg z-20 pointer-events-none" />
+          <div className="absolute inset-0 bg-canvas-100/[0.32] rounded-lg z-20 pointer-events-none" />
         )}
         <Col className={clsx('relative w-full rounded transition-all')}>
           <Row className={clsx('absolute top-2 right-2 items-start justify-end px-2 pb-3 z-10')}>
@@ -482,7 +488,7 @@ function ProfilePreview(props: {
                 <div
                   className={clsx(
                     'absolute bottom-0 inset-x-0 h-16 bg-gradient-to-t from-canvas-50 to-transparent pointer-events-none',
-                    'group-hover:from-canvas-100 dark:group-hover:from-canvas-100',
+                    // 'group-hover:from-canvas-100 dark:group-hover:from-canvas-100',
                   )}
                 />
               )}
@@ -522,7 +528,7 @@ function ProfilePreview(props: {
           <div
             className="absolute -inset-[200%] animate-spin"
             style={{
-              background: `conic-gradient(from 0deg, ${isDarkTheme ? '#000000' : '#ffffff'}, ${isDarkTheme ? '#000000' : '#ffffff'}, #3b82f6)`,
+              background: `conic-gradient(from 0deg, ${isDarkTheme ? '#000000' : '#ffffff'}, ${isDarkTheme ? '#000000' : '#ffffff'}, #C17F3E)`,
               animationDuration: '1s',
             }}
           />
