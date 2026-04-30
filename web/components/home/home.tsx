@@ -40,14 +40,6 @@ function FeatureCard({icon, title, text}: FeatureCardProps) {
       hover:-translate-y-1 hover:shadow-[0_12px_32px_rgba(44,36,22,0.10)] hover:border-[#C17F3E]
     "
     >
-      {/* Left accent bar */}
-      <div
-        className="
-        absolute left-0 top-1 bottom-1 w-1 rounded-l-xl bg-[#C17F3E]
-        opacity-0 group-hover:opacity-100 transition-opacity duration-200
-      "
-      />
-
       <div className="w-11 h-11 rounded-xl bg-canvas-200 border border-canvas-300 flex items-center justify-center text-xl mb-5">
         {icon}
       </div>
