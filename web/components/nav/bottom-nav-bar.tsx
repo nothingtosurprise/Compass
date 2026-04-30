@@ -18,7 +18,7 @@ import {Item} from './sidebar-item'
 
 const itemClass =
   'sm:hover:bg-ink-200 block w-full py-1 px-3 text-center sm:hover:text-primary-700 transition-colors'
-const selectedItemClass = 'bg-ink-100 text-primary-700'
+const selectedItemClass = 'bg-canvas-100 text-primary-700'
 const touchItemClass = 'bg-primary-100'
 
 // From https://codepen.io/chris__sev/pen/QWGvYbL
