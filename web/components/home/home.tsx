@@ -91,7 +91,7 @@ function SocialProof({label}: {label: React.ReactNode}) {
 function QuoteBlock({children}: {children: React.ReactNode}) {
   return (
     <div className="relative bg-canvas-50 border-[1.5px] border-canvas-200 rounded-2xl px-10 py-9 text-center max-w-2xl mx-auto mb-14">
-      <span className="absolute top-5 left-8 text-6xl text-primary-700 font-serif leading-none select-none">
+      <span className="absolute top-3 left-8 text-6xl text-primary-700 font-serif leading-none select-none">
         "
       </span>
       <p className="relative z-10 text-base text-primary-700 italic leading-relaxed">{children}</p>
@@ -109,10 +109,10 @@ function OpenSourceStrip({
   badges: {label: string; url: string; primary?: boolean}[]
 }) {
   return (
-    <div className="w-full max-w-4xl bg-canvas-950 rounded-2xl px-10 py-8 flex items-center justify-between gap-6 flex-wrap">
+    <div className="w-full max-w-4xl bg-canvas-950 dark:bg-[#F7F4EF] rounded-2xl px-10 py-8 flex items-center justify-between gap-6 flex-wrap">
       <div>
-        <h3 className="text-white text-xl font-bold mb-1.5">{title}</h3>
-        <p className="text-white/55 text-sm leading-relaxed">{description}</p>
+        <h3 className="text-ink-100 text-xl font-bold mb-1.5">{title}</h3>
+        <p className="text-ink-100/55 text-sm leading-relaxed">{description}</p>
       </div>
       <div className="flex gap-2 flex-wrap flex-shrink-0">
         {badges.map((b) => (
@@ -124,7 +124,7 @@ function OpenSourceStrip({
               ${
                 b.primary
                   ? 'bg-primary-500 text-white border-[#C17F3E] hover:bg-primary-600'
-                  : 'bg-white/5 text-white/75 border-[rgba(255,255,255,0.12)] hover:bg-white/15 hover:text-white/75'
+                  : 'bg-primary-500/30 text-ink-100/75 border-primary-500/30 hover:bg-primary-500/50 hover:text-ink-100/75'
               }
             `}
           >
