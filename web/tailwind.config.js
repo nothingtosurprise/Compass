@@ -1,4 +1,4 @@
-/* eslint-disable @typescript-eslint/no-var-requires */
+/* eslint-disable @typescript-eslint/no-require-imports*/
 const defaultTheme = require('tailwindcss/defaultTheme')
 const plugin = require('tailwindcss/plugin')
 
@@ -427,18 +427,35 @@ module.exports = {
           900: 'rgb(var(--color-yes-900) / <alpha-value>)',
           950: 'rgb(var(--color-yes-950) / <alpha-value>)',
         },
+        // brand: {
+        //   primary: 'rgb(var(--color-primary-500) / <alpha-value>)', // Amber
+        //   secondary: 'rgb(var(--color-primary-700) / <alpha-value>)', // Terracotta
+        //   accent: 'rgb(var(--color-green-500) / <alpha-value>)', // Sage
+        // },
+        // background: {
+        //   clear: 'rgb(var(--color-canvas-50) / <alpha-value>)',
+        //   deep: 'rgb(var(--color-canvas-100) / <alpha-value>)',
+        //   tag: 'rgb(var(--color-canvas-200) / <alpha-value>)',
+        //   sidebar: 'rgb(var(--color-canvas-950) / <alpha-value>)',
+        // },
+        // action: {
+        //   cta: 'rgb(var(--color-primary-500) / <alpha-value>)',
+        //   disabled: 'rgb(var(--color-ink-500) / <alpha-value>)',
+        // },
       },
       typography: (theme) => ({
         DEFAULT: {
           css: {
             'blockquote p:first-of-type::before': false,
             'blockquote p:last-of-type::after': false,
+            '--tw-prose-body': theme('colors.ink.900'),
+            '--tw-prose-headings': theme('colors.ink.900'),
+            '--tw-prose-links': theme('colors.primary.500'),
+            '--tw-prose-bold': 'inherit',
+            '--tw-prose-quote-borders': theme('colors.green.500'),
+            '--tw-prose-invert-quote-borders': theme('colors.green.300'),
             'code::before': false,
             'code::after': false,
-            '--tw-prose-bold': 'inherit',
-            '--tw-prose-invert-bold': 'inherit',
-            '--tw-prose-quote-borders': theme('colors.teal.600'),
-            '--tw-prose-invert-quote-borders': theme('colors.teal.300'),
           },
         },
       }),
