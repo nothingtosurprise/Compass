@@ -167,7 +167,7 @@ export const Search = forwardRef<
           ref={ref}
           value={keywordInput}
           placeholder={placeholder}
-          className={'w-full'}
+          className={'w-48 sm:w-96'}
           onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
             setKeywordInput(e.target.value)
           }}
