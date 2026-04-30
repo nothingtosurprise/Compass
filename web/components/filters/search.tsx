@@ -235,7 +235,7 @@ export const Search = forwardRef<
             color={'none'}
             className={'text-white bg-primary-500 hover:bg-primary-400 rounded-xl'}
           >
-            🔔
+            🔔{' '}
             {bookmarked
               ? t('common.saved', 'Saved!')
               : loadingBookmark
