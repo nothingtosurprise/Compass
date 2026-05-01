@@ -25,7 +25,7 @@ export function ContactComponent() {
   const showButton = !!editor?.getText().length
 
   return (
-    <Col className="mx-2">
+    <Col className="max-w-3xl mx-auto">
       <Title className="!mb-2 text-3xl">{t('contact.title', 'Contact')}</Title>
       <p className={'custom-link mb-4'}>
         {t('contact.intro_prefix', 'You can also contact us through this ')}

@@ -9,7 +9,7 @@ export default function TermsPage() {
   return (
     <PageBase
       trackPageView={'terms'}
-      className="max-w-4xl mx-auto p-8 text-gray-800 dark:text-white col-span-8 bg-canvas-50"
+      className="max-w-4xl mx-auto p-8 text-gray-800 dark:text-white col-span-8"
     >
       <SEO
         title={t('terms.seo.title', 'Terms & Conditions')}

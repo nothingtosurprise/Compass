@@ -8,7 +8,7 @@ export default function PrivacyPage() {
   const t = useT()
 
   return (
-    <PageBase trackPageView={'terms'} className="max-w-4xl mx-auto p-8 col-span-8 bg-canvas-50">
+    <PageBase trackPageView={'terms'} className="max-w-4xl mx-auto p-8 col-span-8">
       <SEO
         title={t('privacy.seo.title', 'Privacy')}
         description={t('privacy.seo.description', 'Privacy Policy for Compass')}

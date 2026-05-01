@@ -69,7 +69,7 @@ const pressItems: PressItem[] = [
 const PressItem = ({item}: {item: PressItem; locales: Intl.LocalesArgument}) => {
   const t = useT()
   return (
-    <div className="mb-8 px-6 pb-4 border border-canvas-200 rounded-lg shadow-md hover:shadow-lg transition-shadow">
+    <div className="mb-8 px-6 pb-4 border border-canvas-200 rounded-lg shadow-md hover:shadow-lg transition-shadow bg-canvas-50">
       <h3 className="text-xl font-semibold mb-2">
         <Link href={item.url} target="_blank" rel="noopener noreferrer" className="hover:underline">
           {item.title}
@@ -130,7 +130,7 @@ export default function PressPage() {
         <div className="mb-12">
           <h2 className="text-2xl font-semibold mb-6">{t('press.media_kit', 'Media Kit')}</h2>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-            <div className="px-6 pb-4 border border-canvas-200 rounded-lg shadow">
+            <div className="px-6 pb-4 border border-canvas-200 rounded-lg shadow bg-canvas-50">
               <h3 className="text-lg font-medium mb-3">
                 {t('press.brand_assets', 'Brand Assets')}
               </h3>
@@ -139,19 +139,19 @@ export default function PressPage() {
               </p>
               <a
                 href="https://github.com/CompassConnections/assets/archive/refs/heads/main.zip"
-                className="inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md shadow-sm text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+                className="inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md shadow-sm text-white bg-primary-600 hover:bg-primary-700 focus:outline-none transition-all"
               >
                 {t('press.download_assets', 'Download Assets')}
               </a>
             </div>
-            <div className="px-6 pb-4 border border-canvas-200 rounded-lg shadow">
+            <div className="px-6 pb-4 border border-canvas-200 rounded-lg shadow bg-canvas-50">
               <h3 className="text-lg font-medium mb-3">{t('press.contact', 'Press Contact')}</h3>
               <p className="-300 mb-4">
                 {t('press.contact_description', 'For press inquiries, please contact our team.')}
               </p>
               <a
                 href="mailto:hello@compassmeet.com"
-                className="inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md shadow-sm text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+                className="inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md shadow-sm text-white bg-primary-600 hover:bg-primary-700 focus:outline-none transition-all"
               >
                 {t('press.contact_us', 'Contact Us')}
               </a>

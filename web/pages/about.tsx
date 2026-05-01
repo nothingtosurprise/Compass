@@ -5,6 +5,7 @@ import Link from 'next/link'
 import {ReactNode} from 'react'
 import {CopyLinkOrShareButton, ShareProfileOnXButton} from 'web/components/buttons/copy-link-button'
 import {GeneralButton} from 'web/components/buttons/general-button'
+import {Row} from 'web/components/layout/row'
 import {PageBase} from 'web/components/page-base'
 import {SEO} from 'web/components/SEO'
 import {useT} from 'web/lib/locale'
@@ -57,7 +58,7 @@ function FeatureCardWide({icon, title, text}: FeatureCardProps) {
       className="
         group relative overflow-hidden col-span-1 md:col-span-2
         bg-canvas-50 border-[1.5px] border-canvas-200 rounded-2xl p-7
-        flex items-center gap-6
+        flex flex-col sm:flex-row items-start sm:items-center gap-0 sm:gap-6
         transition-all duration-[120ms] ease-in
         hover:shadow-[0_10px_30px_rgba(44,36,22,0.09)]
         hover:border-primary-500
@@ -66,7 +67,7 @@ function FeatureCardWide({icon, title, text}: FeatureCardProps) {
       <div className="w-11 h-11 rounded-xl bg-canvas-200 border border-canvas-300 flex items-center justify-center text-xl flex-shrink-0">
         {icon}
       </div>
-      <div>
+      <div className={'min-w-0'}>
         <h3 className="text-base font-bold text-ink-900 mb-2">{title}</h3>
         <p className="text-sm text-ink-500 leading-relaxed">{text}</p>
       </div>
@@ -132,11 +133,11 @@ function ShareStrip({title, text}: {title: string; text: string}) {
   const t = useT()
   return (
     <div className="bg-canvas-950 rounded-2xl px-9 py-8 flex items-center justify-between gap-6 flex-wrap">
-      <div className={'max-w-[500px]'}>
+      <div className={'max-w-[450px]'}>
         <h3 className="text-white text-lg font-bold mb-1.5">📣 {title}</h3>
         <p className="text-primary-500 text-sm leading-relaxed">{text}</p>
       </div>
-      <div className="flex gap-2 flex-wrap flex-shrink-0">
+      <Row className="flex gap-2 flex-wrap">
         {/*//     */}
         {/*//     ${*/}
         {/*//       primary*/}
@@ -157,7 +158,7 @@ function ShareStrip({title, text}: {title: string; text: string}) {
             'bg-primary-500 text-white hover:text-white border-primary-500 hover:bg-primary-600',
           )}
         />
-      </div>
+      </Row>
     </div>
   )
 }

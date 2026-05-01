@@ -1,19 +1,202 @@
 import clsx from 'clsx'
 import {type Stats} from 'common/stats'
-import {useEffect, useState} from 'react'
-import {Col} from 'web/components/layout/col'
+import {ReactNode, useEffect, useState} from 'react'
 import {PageBase} from 'web/components/page-base'
 import {SEO} from 'web/components/SEO'
 import ChartMembers from 'web/components/widgets/charts'
-import StatBox from 'web/components/widgets/stat-box'
 import {api} from 'web/lib/api'
 import {useT} from 'web/lib/locale'
 import {getCount} from 'web/lib/supabase/users'
+
+// ─── Types ────────────────────────────────────────────────────────────────────
+
+interface StatCardProps {
+  value: string | number | null | undefined
+  label: string
+  icon: string
+  accent?: 'amber' | 'sage' | 'muted'
+  large?: boolean
+}
+
+interface StatGroupProps {
+  icon: string
+  title: string
+  children: ReactNode
+}
+
+// ─── Helpers ──────────────────────────────────────────────────────────────────
+
+function formatNumber(n: number): string {
+  if (n >= 1_000_000) return `${(n / 1_000_000).toFixed(1)}M`
+  if (n >= 1_000) return `${(n / 1_000).toFixed(1)}K`
+  return n.toLocaleString()
+}
+
+// ─── Stat Card ────────────────────────────────────────────────────────────────
+
+function StatCard({value, label, icon, accent = 'amber', large}: StatCardProps) {
+  if (value === null || value === undefined || value === 0) return null
+
+  const formatted = typeof value === 'number' ? formatNumber(value) : value
+
+  const accentClasses = {
+    amber: 'text-primary-500',
+    sage: 'text-green-500',
+    muted: 'text-ink-500',
+  }
+
+  return (
+    <div
+      className="
+        group relative overflow-hidden
+        bg-canvas-50 border-[1.5px] border-canvas-200 rounded-2xl p-6
+        transition-all duration-[120ms] ease-in
+        hover:shadow-[0_10px_30px_rgba(44,36,22,0.09)]
+        hover:border-primary-500
+      "
+    >
+      <div className="flex items-start justify-between mb-3">
+        <div className="w-9 h-9 rounded-lg bg-canvas-200 border border-canvas-300 flex items-center justify-center text-base flex-shrink-0">
+          {icon}
+        </div>
+      </div>
+
+      <div
+        className={clsx(
+          'font-black tracking-tight leading-none mb-2',
+          large ? 'text-4xl' : 'text-3xl',
+          accentClasses[accent],
+        )}
+      >
+        {formatted}
+      </div>
+
+      <p className="text-xs font-semibold text-ink-500 uppercase tracking-wide leading-tight">
+        {label}
+      </p>
+    </div>
+  )
+}
+
+// ─── Stat Group ───────────────────────────────────────────────────────────────
+
+function StatGroup({icon, title, children}: StatGroupProps) {
+  return (
+    <div className="mb-10">
+      <div className="flex items-center gap-3 mb-4">
+        <span className="text-base">{icon}</span>
+        <span className="text-[11px] font-bold tracking-[1.2px] uppercase text-ink-500">
+          {title}
+        </span>
+        <div className="flex-1 h-px bg-canvas-200" />
+      </div>
+      <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3">{children}</div>
+    </div>
+  )
+}
+
+// ─── Chart wrapper ────────────────────────────────────────────────────────────
+
+function ChartCard() {
+  const t = useT()
+  return (
+    <div
+      className="
+      bg-canvas-50 border-[1.5px] border-canvas-200 rounded-2xl p-6 mb-10
+      shadow-[0_2px_8px_rgba(44,36,22,0.05)]
+    "
+    >
+      <div className="flex items-center gap-2 mb-1">
+        <div className="w-8 h-8 rounded-lg bg-canvas-200 border border-canvas-300 flex items-center justify-center text-sm">
+          📈
+        </div>
+        <div>
+          <h2 className="text-sm font-bold text-ink-900 leading-tight">
+            {t('stats.chart.title', 'Member Growth')}
+          </h2>
+          <p className="text-xs text-ink-500">
+            {t('stats.chart.subtitle', 'Total & completed profiles over time')}
+          </p>
+        </div>
+      </div>
+      <ChartMembers />
+    </div>
+  )
+}
+
+// ─── Highlight Row ────────────────────────────────────────────────────────────
+
+function HighlightRow({
+  members,
+  active,
+  messages,
+}: {
+  members: number | null
+  active: number | null
+  messages: number | null | undefined
+}) {
+  const t = useT()
+  const items = [
+    {
+      value: members,
+      label: t('stats.highlight.members', 'Total Members'),
+      icon: '👥',
+      accent: 'amber' as const,
+    },
+    {
+      value: active,
+      label: t('stats.highlight.active', 'Active (last month)'),
+      icon: '⚡',
+      accent: 'sage' as const,
+    },
+    {
+      value: messages,
+      label: t('stats.highlight.messages', 'Messages sent'),
+      icon: '✉️',
+      accent: 'amber' as const,
+    },
+  ].filter((i) => !!i.value)
+
+  if (!items.length) return null
+
+  return (
+    <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 mb-10">
+      {items.map((item) => (
+        <div
+          key={item.label}
+          className="
+            relative overflow-hidden
+            bg-canvas-950 rounded-2xl p-6
+            border-[1.5px] border-canvas-900
+          "
+        >
+          <div className="w-9 h-9 rounded-lg bg-canvas-900 flex items-center justify-center text-base mb-4">
+            {item.icon}
+          </div>
+          <div
+            className={clsx(
+              'text-4xl font-black tracking-tight leading-none mb-2',
+              item.accent === 'sage' ? 'text-green-500' : 'text-primary-400',
+            )}
+          >
+            {typeof item.value === 'number' ? formatNumber(item.value) : item.value}
+          </div>
+          <p className="text-xs font-semibold text-white/60 uppercase tracking-wide">
+            {item.label}
+          </p>
+        </div>
+      ))}
+    </div>
+  )
+}
+
+// ─── Page ─────────────────────────────────────────────────────────────────────
 
 export default function Stats() {
   const t = useT()
   const [data, setData] = useState<Record<string, number | null>>({})
   const [statsData, setStatsData] = useState<Stats | undefined>(undefined)
+  const [loading, setLoading] = useState(true)
 
   useEffect(() => {
     async function load() {
@@ -37,21 +220,22 @@ export default function Stats() {
       const result: Record<string, number | null> = {}
       if (settled.status === 'fulfilled') {
         settled.value.forEach((res, i) => {
-          const key = tables[i]
-          if (res.status === 'fulfilled') result[key] = res.value
-          else result[key] = null
+          result[tables[i]] = res.status === 'fulfilled' ? res.value : null
         })
       }
 
-      if (statsResult.status === 'fulfilled') {
-        setStatsData(statsResult.value)
-      }
+      if (statsResult.status === 'fulfilled') setStatsData(statsResult.value)
 
       setData(result)
+      setLoading(false)
     }
 
     void load()
   }, [])
+
+  const genderRatioLabel = statsData?.genderRatio
+    ? `${statsData.genderRatio.male ?? 0} / ${statsData.genderRatio.female ?? 0}`
+    : null
 
   return (
     <PageBase trackPageView={'stats'}>
@@ -61,75 +245,138 @@ export default function Stats() {
           'stats.seo.description',
           'Explore Compass platform growth metrics, member statistics, active discussions, and community engagement data.',
         )}
-        url={`/stats`}
+        url="/stats"
       />
-      <h1 className="text-3xl font-semibold text-center mb-6">
-        {t('stats.title', 'Growth & Stats')}
-      </h1>
-      <Col className={'sm:mx-4 mx-1 mb-8'}>
-        <ChartMembers />
-      </Col>
-      <Col className={'mx-4 mb-8'}>
-        <Col
-          className={clsx(
-            'pb-[58px] lg:pb-0', // bottom bar padding
-            'text-ink-1000 mx-auto w-full grid grid-cols-1 gap-8 max-w-3xl sm:grid-cols-2 lg:min-h-0 lg:pt-4 mt-4',
-          )}
-        >
-          {!!data.profiles && (
-            <StatBox value={data.profiles} label={t('stats.members', 'Members')} />
-          )}
-          {!!data.active_members && (
-            <StatBox
-              value={data.active_members}
-              label={t('stats.active_members', 'Active Members (last month)')}
+
+      <div className="max-w-4xl mx-auto px-6 py-12 pb-20">
+        {/* ── Page header ── */}
+        <div className="mb-10">
+          <p className="text-xs font-bold tracking-[1.5px] uppercase text-primary-500 mb-3">
+            {t('stats.eyebrow', 'Transparency')}
+          </p>
+          <h1 className="text-[clamp(28px,4vw,40px)] font-black text-ink-900 tracking-tight leading-tight mb-3">
+            {t('stats.title', 'Growth & Stats')}
+          </h1>
+          <p className="text-lg text-ink-500 max-w-3xl leading-relaxed">
+            {t(
+              'stats.subtitle',
+              "Real numbers. No spin. Compass is built in the open — here's exactly how we're growing.",
+            )}
+          </p>
+        </div>
+
+        {/* ── Loading skeleton ── */}
+        {loading && (
+          <div className="grid grid-cols-2 md:grid-cols-3 gap-3 mb-10">
+            {Array.from({length: 6}).map((_, i) => (
+              <div
+                key={i}
+                className="bg-canvas-50 border-[1.5px] border-canvas-200 rounded-2xl p-6 animate-pulse"
+              >
+                <div className="w-9 h-9 rounded-lg bg-canvas-200 mb-4" />
+                <div className="h-8 w-20 bg-canvas-200 rounded mb-2" />
+                <div className="h-3 w-24 bg-canvas-200 rounded" />
+              </div>
+            ))}
+          </div>
+        )}
+
+        {!loading && (
+          <>
+            {/* ── Hero highlight row ── */}
+            <HighlightRow
+              members={data.profiles}
+              active={data.active_members}
+              messages={statsData?.messages}
             />
-          )}
-          {!!data.private_user_message_channels && (
-            <StatBox
-              value={data.private_user_message_channels}
-              label={t('stats.discussions', 'Discussions')}
-            />
-          )}
-          {!!statsData?.messages && (
-            <StatBox value={statsData?.messages} label={t('stats.messages', 'Messages')} />
-          )}
-          {!!data.compatibility_prompts && (
-            <StatBox
-              value={data.compatibility_prompts}
-              label={t('stats.compatibility_prompts', 'Compatibility Prompts')}
-            />
-          )}
-          {!!data.compatibility_answers && (
-            <StatBox
-              value={data.compatibility_answers}
-              label={t('stats.prompts_answered', 'Prompts Answered')}
-            />
-          )}
-          {!!data.votes && <StatBox value={data.votes} label={t('stats.proposals', 'Proposals')} />}
-          {!!data.vote_results && (
-            <StatBox value={data.vote_results} label={t('stats.votes', 'Votes')} />
-          )}
-          {!!data.bookmarked_searches && (
-            <StatBox
-              value={data.bookmarked_searches}
-              label={t('stats.searches_bookmarked', 'Searches Bookmarked')}
-            />
-          )}
-          {!!data.profile_comments && (
-            <StatBox
-              value={data.profile_comments}
-              label={t('stats.endorsements', 'Endorsements')}
-            />
-          )}
-          {!!statsData?.genderRatio && (
-            <StatBox
-              value={`${statsData.genderRatio.male ?? 0} / ${statsData.genderRatio.female ?? 0}`}
-              label={t('stats.gender_ratio', 'Male / Female Ratio')}
-            />
-          )}
-        </Col>
-      </Col>
+
+            {/* ── Growth chart ── */}
+            <ChartCard />
+
+            {/* ── Community ── */}
+            <StatGroup icon="👥" title={t('stats.group.community', 'Community')}>
+              <StatCard
+                value={data.profiles}
+                label={t('stats.members', 'Members')}
+                icon="👤"
+                accent="amber"
+              />
+              <StatCard
+                value={data.active_members}
+                label={t('stats.active_members', 'Active (last month)')}
+                icon="⚡"
+                accent="sage"
+              />
+              <StatCard
+                value={genderRatioLabel}
+                label={t('stats.gender_ratio', 'Male / Female')}
+                icon="⚖️"
+                accent="muted"
+              />
+              <StatCard
+                value={data.profile_comments}
+                label={t('stats.endorsements', 'Endorsements')}
+                icon="⭐"
+                accent="amber"
+              />
+            </StatGroup>
+
+            {/* ── Conversations ── */}
+            <StatGroup icon="💬" title={t('stats.group.conversations', 'Conversations')}>
+              <StatCard
+                value={data.private_user_message_channels}
+                label={t('stats.discussions', 'Discussions')}
+                icon="🗨️"
+                accent="amber"
+              />
+              <StatCard
+                value={statsData?.messages}
+                label={t('stats.messages', 'Messages')}
+                icon="✉️"
+                accent="sage"
+              />
+            </StatGroup>
+
+            {/* ── Compatibility ── */}
+            <StatGroup icon="🎯" title={t('stats.group.compatibility', 'Compatibility')}>
+              <StatCard
+                value={data.compatibility_prompts}
+                label={t('stats.compatibility_prompts', 'Prompts Created')}
+                icon="❓"
+                accent="amber"
+              />
+              <StatCard
+                value={data.compatibility_answers}
+                label={t('stats.prompts_answered', 'Prompts Answered')}
+                icon="✅"
+                accent="sage"
+              />
+            </StatGroup>
+
+            {/* ── Democracy ── */}
+            <StatGroup icon="🗳️" title={t('stats.group.democracy', 'Democracy')}>
+              <StatCard
+                value={data.votes}
+                label={t('stats.proposals', 'Proposals')}
+                icon="📋"
+                accent="amber"
+              />
+              <StatCard
+                value={data.vote_results}
+                label={t('stats.votes', 'Votes Cast')}
+                icon="🗳️"
+                accent="sage"
+              />
+              {/*<StatCard*/}
+              {/*  value={data.bookmarked_searches}*/}
+              {/*  label={t('stats.searches_bookmarked', 'Saved Searches')}*/}
+              {/*  icon="🔖"*/}
+              {/*  accent="muted"*/}
+              {/*/>*/}
+            </StatGroup>
+          </>
+        )}
+      </div>
     </PageBase>
   )
 }

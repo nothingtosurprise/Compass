@@ -98,6 +98,8 @@
   :root {
     touch-action: pan-y;
 
+    --grid-stroke: rgb(232 213 188); /* canvas-200 */
+
     /* Ink - Text Colors */
     --color-ink-900: 30 26 20; /* Deep Warm Black (#1E1A14) */
     --color-ink-500: 140 128 112; /* Muted Warm Gray (#8C8070) */
@@ -210,6 +212,8 @@
 
   .dark {
     color-scheme: dark;
+
+    --grid-stroke: rgb(68 52 34); /* canvas-900 */
 
     /* Ink - Text becomes light */
     --color-ink-950: 255 255 255; /* Purest highlight */
