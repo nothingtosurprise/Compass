@@ -38,10 +38,6 @@ function FeatureCard({icon, title, text}: FeatureCardProps) {
         transition-all duration-[120ms] ease-in
         hover:shadow-[0_10px_30px_rgba(44,36,22,0.09)]
         hover:border-primary-500
-        before:absolute before:left-0 before:top-0 before:bottom-0 before:w-[4px]
-        before:bg-primary-500 before:rounded-l-2xl
-        before:opacity-0 before:transition-opacity before:duration-[120ms]
-        hover:before:opacity-100
       "
     >
       <div className="w-11 h-11 rounded-xl bg-canvas-200 border border-canvas-300 flex items-center justify-center text-xl mb-5 flex-shrink-0">
@@ -65,10 +61,6 @@ function FeatureCardWide({icon, title, text}: FeatureCardProps) {
         transition-all duration-[120ms] ease-in
         hover:shadow-[0_10px_30px_rgba(44,36,22,0.09)]
         hover:border-primary-500
-        before:absolute before:left-0 before:top-0 before:bottom-0 before:w-[4px]
-        before:bg-primary-500 before:rounded-l-2xl
-        before:opacity-0 before:transition-opacity before:duration-[120ms]
-        hover:before:opacity-100
       "
     >
       <div className="w-11 h-11 rounded-xl bg-canvas-200 border border-canvas-300 flex items-center justify-center text-xl flex-shrink-0">
@@ -93,11 +85,11 @@ function HelpCard({icon, title, text, buttonLabel, buttonUrl, buttonPrimary, id}
         transition-all duration-[120ms] ease-in
         hover:shadow-[0_10px_30px_rgba(44,36,22,0.09)]
         hover:border-primary-500
-        before:absolute before:left-0 before:top-0 before:bottom-0 before:w-[4px]
-        before:bg-primary-500 before:rounded-l-2xl
-        before:opacity-0 before:transition-opacity before:duration-[120ms]
-        hover:before:opacity-100
       "
+      // NOTE: Abandoned the left accent bar due to a known Firefox rendering bug.
+      // Firefox fails to correctly apply overflow-hidden on rounded containers with borders,
+      // causing the absolute/flex-item to bleed past the corner radius.
+      // Removed for cross-browser consistency.
     >
       <div className="w-10 h-10 rounded-xl bg-canvas-200 border border-canvas-300 flex items-center justify-center text-lg mb-4 flex-shrink-0">
         {icon}
