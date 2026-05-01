@@ -44,7 +44,7 @@ export default function MarkdownPage({content, filename}: Props) {
   const formattedContent = (
     <Col className="items-center">
       <Col className="items-center justify-center mb-8 max-w-5xl">
-        <Col className="w-full rounded px-3 py-4 sm:px-6 space-y-4">
+        <Col className="w-full rounded px-4 py-4 sm:px-6 space-y-4">
           {backButton}
           <div className={'custom-link !mt-0 prose prose-neutral dark:prose-invert'}>
             <CustomMarkdown>{content}</CustomMarkdown>
