@@ -92,14 +92,14 @@ function HelpCard({icon, title, text, buttonLabel, buttonUrl, buttonPrimary, id}
         bg-canvas-50 border-[1.5px] border-canvas-200 rounded-2xl p-7
         transition-all duration-[120ms] ease-in
         hover:shadow-[0_10px_30px_rgba(44,36,22,0.09)]
-        hover:border-green-500
+        hover:border-primary-500
         before:absolute before:left-0 before:top-0 before:bottom-0 before:w-[4px]
-        before:bg-green-500 before:rounded-l-2xl
+        before:bg-primary-500 before:rounded-l-2xl
         before:opacity-0 before:transition-opacity before:duration-[120ms]
         hover:before:opacity-100
       "
     >
-      <div className="w-10 h-10 rounded-xl bg-[#D6E8D9] border border-[#B8D6BC] flex items-center justify-center text-lg mb-4 flex-shrink-0">
+      <div className="w-10 h-10 rounded-xl bg-canvas-200 border border-canvas-300 flex items-center justify-center text-lg mb-4 flex-shrink-0">
         {icon}
       </div>
       <h3 id={id} className="text-base font-bold text-ink-900 mb-2">
@@ -113,7 +113,7 @@ function HelpCard({icon, title, text, buttonLabel, buttonUrl, buttonPrimary, id}
           color={
             buttonPrimary
               ? 'bg-primary-500 hover:bg-primary-600 text-white border-primary-500 shadow-[0_3px_12px_rgba(193,127,62,0.3)]'
-              : 'bg-canvas-100 hover:border-green-500 hover:text-green-500 border-canvas-300 text-ink-900'
+              : 'bg-canvas-100 hover:border-primary-600 hover:text-primary-600 border-canvas-300 text-ink-900'
           }
         />
       </div>
