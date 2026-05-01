@@ -13,7 +13,7 @@ import {Tooltip} from '../widgets/tooltip'
 
 export function CopyLinkOrShareButton(props: {
   url: string
-  eventTrackingName: string // was type ShareEventName — why??
+  eventTrackingName?: string // was type ShareEventName — why??
   tooltip?: string
   className?: string
   iconClassName?: string
@@ -49,7 +49,7 @@ export function CopyLinkOrShareButton(props: {
         onClick={onClick}
         className={clsx(
           className,
-          'text-primary-700 hover:text-primary-800',
+          'text-primary-700 hover:text-primary-800 gap-2',
           isSuccess && 'duration-[25ms]',
         )}
         disabled={!url}
@@ -199,12 +199,12 @@ export const shareOnLinkedIn = (profileUrl: string) => {
   window.open(shareUrl, '_blank', 'noopener,noreferrer')
 }
 
-export const ShareProfileOnXButton = (props: {username: string; className?: string}) => {
+export const ShareProfileOnXButton = (props: {username?: string; className?: string}) => {
   const {username, className} = props
   const t = useT()
 
   return (
-    <Button className={className} onClick={() => shareOnX(getXShareProfileUrl(username, t))}>
+    <Button className={className} onClick={() => shareOnX(getXShareProfileUrl(t, username))}>
       {t('share_profile.on_x', 'Share on X')}
     </Button>
   )

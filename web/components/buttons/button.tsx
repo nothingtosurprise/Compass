@@ -35,9 +35,9 @@ const sizeClasses = {
 export const baseButtonClasses =
   'font-md inline-flex items-center justify-center rounded-md ring-inset transition-colors disabled:cursor-not-allowed text-center'
 
-const solid = 'disabled:bg-ink-300 text-white'
+const solid = 'disabled:bg-canvas-200 text-white'
 export const outline =
-  'ring-1 ring-current ring-ink-300 disabled:ring-ink-300 disabled:text-ink-300 disabled:bg-inherit'
+  'ring-1 ring-current ring-canvas-200 disabled:ring-canvas-200 disabled:text-canvas-200 disabled:bg-inherit'
 const gradient = [solid, 'bg-gradient-to-r hover:saturate-150 disabled:bg-none']
 
 export function buttonClass(size: SizeType, color: ColorType) {

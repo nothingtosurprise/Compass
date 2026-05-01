@@ -123,8 +123,8 @@ export const PLATFORM_LABELS: {[key in Site]: string} = {
 }
 
 export function getXShareProfileUrl(
-  username: string,
   t: (key: string, fallback: string, vars?: Record<string, string | number>) => string,
+  username?: string,
 ) {
   const encodedText = encodeURIComponent(
     t(
@@ -132,7 +132,7 @@ export function getXShareProfileUrl(
       "There's a free, open-source alternative to dating and networking apps.\nNo swipes. No ads. No algorithms. Just search for people who share your values.",
     ) + '\n@compassmeet',
   )
-  const encodedUrl = encodeURIComponent(`${DEPLOYED_WEB_URL}/${username}`)
+  const encodedUrl = encodeURIComponent(`${DEPLOYED_WEB_URL}/${username || ''}`)
 
   return `https://x.com/intent/tweet?text=${encodedText}&url=${encodedUrl}`
 }

@@ -105,22 +105,6 @@
     /* Green - Accents */
     --color-green-500: 107 143 113; /* Accent - Sage Green (#6B8F71) */
 
-    /* Text / Ink Grey Scale */
-    /* High Contrast */
-    --color-ink-0: 255 255 255; /* white */
-    --color-ink-50: 255 255 255;
-    --color-ink-100: 255 255 255;
-    --color-ink-200: 255 255 255;
-    --color-ink-300: 160 160 160;
-    --color-ink-400: 160 160 160;
-    /*--color-ink-500: 80 80 80;*/
-    --color-ink-600: 0 0 0;
-    --color-ink-700: 0 0 0;
-    --color-ink-800: 0 0 0;
-    /*--color-ink-900: 0 0 0;*/
-    --color-ink-950: 0 0 0;
-    --color-ink-1000: 0 0 0; /* black */
-
     /* Canvas - Backgrounds & Surfaces */
     --color-canvas-0: 255 255 255; /* white */
     --color-canvas-25: 242 240 232;
@@ -128,11 +112,6 @@
     --color-canvas-100: 237 232 224; /* Main Page Background - Warm Beige (#EDE8E0) */
     --color-canvas-200: 232 213 188; /* Tags - Light Tan (#E8D5BC) */
     --color-canvas-300: 222 203 178;
-    --color-canvas-400: 160 160 160;
-    --color-canvas-500: 130 130 130;
-    --color-canvas-600: 100 100 100;
-    --color-canvas-700: 75 75 75;
-    --color-canvas-800: 50 50 50;
     --color-canvas-900: 68 52 34; /* Sidebar pressed */
     --color-canvas-950: 44 36 22; /* Sidebar - Dark Espresso (#2C2416) */
     --color-canvas-1000: 44 36 22; /* black */
@@ -149,6 +128,20 @@
     --color-primary-800: 101 58 24; /* #653A18 */
     --color-primary-900: 71 39 16; /* #472710 */
     --color-primary-950: 43 21 8; /* #2B1508 */
+
+    --color-ink-0: 255 255 255; /* white */
+    --color-ink-50: 255 255 255;
+    --color-ink-100: 255 255 255;
+    --color-ink-200: 255 255 255;
+    --color-ink-300: 160 160 160;
+    --color-ink-400: 160 160 160;
+    /*--color-ink-500: 80 80 80;*/
+    --color-ink-600: 0 0 0;
+    --color-ink-700: 0 0 0;
+    --color-ink-800: 0 0 0;
+    /*--color-ink-900: 0 0 0;*/
+    --color-ink-950: 0 0 0;
+    --color-ink-1000: 0 0 0; /* black */
 
     --color-yes-0: 255 255 255;
     --color-yes-50: 249 249 249;
@@ -248,6 +241,7 @@
     --color-canvas-100: 26 22 18; /* Main Page Background (#2C2416) */
     --color-canvas-200: 68 52 34; /* UI Elements/Tags */
     --color-canvas-300: 78 62 44;
+    --color-canvas-900: 25 23 20; /* Sidebar pressed */
     --color-canvas-950: 15 13 10; /* Deepest depth (Sidebar/Bottom) */
     --color-canvas-1000: 247 244 239; /* Deepest depth (Sidebar/Bottom) */
 
@@ -414,7 +408,7 @@ h4,
 h5,
 h6 {
   /*font-family: 'Inter', sans-serif; !* Clean modern font *!*/
-  font-weight: 600; /* Semi-bold for clarity */
+  font-weight: 900; /* Semi-bold for clarity */
   /*color: #111827;                   !* Near-black text for readability *!*/
   line-height: 1.25;
   margin-top: 1.5rem;

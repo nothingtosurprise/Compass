@@ -25,7 +25,7 @@ export const ShareCompassEmail = ({
   const name = toUser.name.split(' ')[0]
   const t = createT(locale)
 
-  const profileShareUrl = getXShareProfileUrl(toUser.username, t)
+  const profileShareUrl = getXShareProfileUrl(t, toUser.username)
 
   return (
     <Html>
