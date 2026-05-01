@@ -28,7 +28,9 @@ export function SidebarItem(props: {item: Item; currentPage?: string}) {
   }
 
   const sidebarClass = clsx(
-    isCurrentPage ? 'bg-canvas-900 text-primary-600' : 'sidebar-text hover:text-primary-600',
+    isCurrentPage
+      ? 'bg-canvas-900 text-primary-600'
+      : 'sidebar-text hover:text-primary-700 hover:translate-x-[2px]',
     'group flex items-center rounded-xl px-3 py-2 text-sm font-medium',
     'focus-visible:bg-ink-100 outline-none transition-all',
   )
@@ -39,8 +41,8 @@ export function SidebarItem(props: {item: Item; currentPage?: string}) {
         <item.icon
           className={clsx(
             isCurrentPage
-              ? 'text-primary-700'
-              : 'text-[#574f45] group-hover:text-primary-700 group-hover:translate-x-[2px]',
+              ? 'text-primary-600'
+              : 'sidebar-text group-hover:text-primary-700 group-hover:translate-x-[2px]',
             '-ml-1 mr-3 h-6 w-6 flex-shrink-0 transition-all',
           )}
           aria-hidden="true"

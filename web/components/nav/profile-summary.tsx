@@ -5,8 +5,11 @@ import {useProfile} from 'web/hooks/use-profile'
 import {User} from 'web/lib/firebase/users'
 import {trackCallback} from 'web/lib/service/analytics'
 
-export function ProfileSummary(props: {user: User; className?: string}) {
-  const {user, className} = props
+export function ProfileSummary(props: {user: User; className?: string; currentPage?: string}) {
+  const {user, className, currentPage} = props
+
+  const isSelected = currentPage === `/${user.username}`
+  // console.log(isSelected, currentPage, `/${user.username}`)
 
   const profile = useProfile()
 
@@ -15,15 +18,16 @@ export function ProfileSummary(props: {user: User; className?: string}) {
       href={profile === null ? '/signup' : `/${user.username}`}
       onClick={trackCallback('sidebar: profile')}
       className={clsx(
-        'hover:bg-canvas-900 text-ink-700 group flex w-full shrink-0 flex-row items-center truncate rounded-xl py-3',
+        'hover:bg-canvas-900 text-ink-700 group flex w-full shrink-0 flex-row items-center truncate rounded-xl py-3 transition-all',
         className,
+        isSelected && 'bg-canvas-900',
       )}
     >
       <div className="w-2 shrink" />
       <Avatar avatarUrl={profile?.pinned_url ?? ''} username={user.username} noLink />
       <div className="mr-1 w-2 shrink-[2]" />
       <div className="shrink-0 grow" data-testid="sidebar-username">
-        <div className="group-hover:text-primary-700">{user.name}</div>
+        <div className="group-hover:text-primary-200">{user.name}</div>
       </div>
       <div className="w-2 shrink" />
     </Link>

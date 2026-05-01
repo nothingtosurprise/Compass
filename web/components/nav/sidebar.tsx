@@ -26,7 +26,8 @@ export default function Sidebar(props: {
 }) {
   const {className, isMobile, style} = props
   const router = useRouter()
-  const currentPage = router.pathname
+  const currentPage = router.asPath
+  // console.log(router)
 
   const user = useUser()
   const profile = useProfile()
@@ -56,13 +57,13 @@ export default function Sidebar(props: {
       {user && !isMobile && (
         <>
           <div className="h-px bg-canvas-900 mb-4" />
-          <ProfileSummary user={user} className="mb-3 text-white" />
+          <ProfileSummary user={user} className="mb-3 text-white" currentPage={currentPage} />
         </>
       )}
 
       <div className="h-px bg-canvas-900 mb-4" />
 
-      <div className="mb-4 flex flex-col gap-1 !overflow-y-auto">
+      <div className="mb-4 flex flex-col gap-1 overflow-y-auto overflow-x-hidden">
         {navOptions.map((item) => (
           <SidebarItem key={item.key} item={item} currentPage={currentPage} />
         ))}
