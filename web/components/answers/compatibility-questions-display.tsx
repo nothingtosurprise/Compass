@@ -453,7 +453,7 @@ export function CompatibilityAnswerBlock(props: {
     <Col
       data-testid="profile-compatibility-section"
       className={
-        'bg-canvas-50 border border-canvas-200 flex-grow gap-4 whitespace-pre-line rounded-xl p-4 leading-relaxed'
+        'bg-canvas-50 border border-canvas-200 flex-grow gap-2 whitespace-pre-line rounded-xl p-4 leading-relaxed'
       }
     >
       <Row
@@ -535,14 +535,14 @@ export function CompatibilityAnswerBlock(props: {
       </Row>
       {answerText && (
         <Row
-          className="bg-canvas-100 w-fit gap-1 rounded-xl px-2 py-1 text-sm"
+          className="bg-canvas-200 w-fit gap-1 rounded-xl px-2 py-1 text-sm"
           data-testid="profile-compatibility-question-answer"
         >
           {answerText}
         </Row>
       )}
-      <Row className="px-2 -mt-4" data-testid="profile-compatibility-question-answer-explanation">
-        {answer?.explanation && <Linkify className="" text={answer.explanation} />}
+      <Row className="px-2" data-testid="profile-compatibility-question-answer-explanation">
+        {answer?.explanation && <Linkify className="" text={`"${answer.explanation}"`} />}
       </Row>
       {distinctPreferredAnswersText.length > 0 && (
         <Col className="gap-2">
@@ -556,7 +556,7 @@ export function CompatibilityAnswerBlock(props: {
             data-testid="profile-compatibility-question-acceptable-answer"
           >
             {distinctPreferredAnswersText.map((text) => (
-              <Row key={text} className="bg-canvas-100 w-fit gap-1 rounded-xl px-2 py-1 text-sm">
+              <Row key={text} className="bg-canvas-200 w-fit gap-1 rounded-xl px-2 py-1 text-sm">
                 {text}
               </Row>
             ))}
